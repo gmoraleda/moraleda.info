@@ -1,5 +1,5 @@
 on: [push]
-name: Publish Website
+name: Deploy
 jobs:
   FTP-Deploy-Action:
     name: FTP-Deploy-Action
