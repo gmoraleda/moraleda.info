@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+  <head>
+    <title><%= current_article.title unless current_article.nil? %></title>
+    <%= stylesheet_link_tag "site" %>
+    <%= javascript_include_tag "site" %>
+  </head>
+  <body>
+
+    <div id="main" role="main">
+    <h1><%= current_article.title unless current_article.nil? %></h1>
+      <%= yield %>
+    </div>
+  </body>
+</html>

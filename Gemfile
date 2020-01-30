@@ -8,3 +8,6 @@ gem 'middleman-deploy', '~> 2.0.0.pre.alpha'
 gem "middleman-syntax"
 gem 'redcarpet', '~> 3.5'
 gem 'rouge', '~> 3.15'
+gem "middleman-blog"
+gem "middleman-livereload", "~> 3.4.3"
+gem 'builder', '~> 3.0'

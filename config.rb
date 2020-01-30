@@ -1,8 +1,6 @@
-# Markdown Engine
-
 set :markdown_engine, :redcarpet
 set :markdown, :fenced_code_blocks => true, :smartypants => true
-
+set :fonts_dir,  'fonts'
 
 # Activate and configure extensions
 # https://middlemanapp.com/advanced/configuration/#configuring-extensions
@@ -12,6 +10,13 @@ activate :autoprefixer do |prefix|
 end
 
 activate :syntax
+activate :livereload
+activate :blog do |blog|
+  blog.prefix = "blog"
+  blog.permalink = "{year}/{month}/{day}/{title}.html"
+  blog.tag_template = "tag.html"
+  blog.calendar_template = "calendar.html"
+end
 
 # Layouts
 # https://middlemanapp.com/basics/layouts/
@@ -20,6 +25,7 @@ activate :syntax
 page '/*.xml', layout: false
 page '/*.json', layout: false
 page '/*.txt', layout: false
+page 'blog/*', layout: 'post'
 
 # With alternative layout
 # page '/path/to/file.html', layout: 'other_layout'
