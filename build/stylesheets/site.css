@@ -1,5 +1,12 @@
+@media only screen and (min-width: 960px) {
+  html {
+    width: 70%; } }
+
+@media only screen and (max-device-width: 480px) {
+  html {
+    width: 90%; } }
+
 html {
-  width: 80%;
   margin-left: auto;
   margin-right: auto; }
 
