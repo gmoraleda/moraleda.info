@@ -1,9 +1,21 @@
+html {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto; }
+
 body {
-  background-color: #d6d6d6;
+  background-color: #ffffff;
   color: #333;
   font-family: -apple-system, BlinkMacSystemFont, "Avenir Next", "Avenir", "Segoe UI", "Lucida Grande", "Helvetica Neue", "Helvetica", "Fira Sans", "Roboto", "Noto", "Droid Sans", "Cantarell", "Oxygen", "Ubuntu", "Franklin Gothic Medium", "Century Gothic", "Liberation Sans", sans-serif;
   padding: 18vh 1rem;
-  text-align: center; }
+  text-align: left; }
+
+footer {
+  position: -webkit-sticky;
+  position: sticky;
+  clear: both;
+  text-align: center;
+  font-size: 0.8em; }
 
 h1 {
   text-align: left; }
@@ -19,9 +31,11 @@ a {
 
 .highlight {
   text-align: left;
-  padding: 4pt;
-  background-color: whitesmoke;
-  border-radius: 4pt; }
+  padding: 8pt;
+  background-color: #f8f8f8;
+  border-radius: 4pt;
+  word-wrap: break-word;
+  font-size: 1.1em; }
 
 .highlight .hll {
   background-color: #ffffcc; }
