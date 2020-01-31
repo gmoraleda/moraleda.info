@@ -28,33 +28,67 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
   </entry>
   <entry>
-    <title>Test</title>
+    <title>🌳 Branching Model for iOS development. Continuous Integration with Bitrise</title>
     <link rel="alternate" href="http://blog.url.com/blog/2020/01/30/test.html"/>
     <id>http://blog.url.com/blog/2020/01/30/test.html</id>
     <published>2020-01-30T21:35:00+01:00</published>
-    <updated>2020-01-31T10:00:50+01:00</updated>
+    <updated>2020-01-31T21:29:53+01:00</updated>
     <author>
       <name>Article Author</name>
     </author>
-    <content type="html">&lt;p&gt;The standard Lorem Ipsum passage, used since the 1500s&lt;/p&gt;
+    <content type="html">&lt;p&gt;When I started working at my current company, the setup we had for our iOS platform was hosted completely locally: &lt;strong&gt;Bitbucket Server&lt;/strong&gt; for the repo, &lt;strong&gt;Jenkins&lt;/strong&gt; as build platform and an own implementation of &lt;strong&gt;Hockeyapp&lt;/strong&gt; for the distribution (as far as I understood, from the old days when Hockeyapp was an open source project). All that was run by an external agency (the one who had developed our app).&lt;/p&gt;
 
-&lt;p&gt;&amp;ldquo;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;One of the first tasks I was assigned to was the internalisation of such services in order to become independent and take control of the development cycle.&lt;/p&gt;
 
-&lt;p&gt;Section 1.10.32 of &amp;ldquo;de Finibus Bonorum et Malorum&amp;rdquo;, written by Cicero in 45 BC&lt;/p&gt;
+&lt;p&gt;For hosting the repository we would use &lt;strong&gt;Bitbucket Cloud&lt;/strong&gt; and &lt;strong&gt;Hockeyapp&lt;/strong&gt; for distribution, but since our company does not host any server at all (our infrastructure runs mostly under the AWS umbrella), taking over the Jenkins implementation as it was, was not an option. &lt;strong&gt;I was in the market for a new cloud CI/CD platform.&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&amp;ldquo;Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://medium.com/xcblog/olympics-of-top-5-cloud-ios-continuous-integration-servers-fcaa6c79468d"&gt;The Olympics of iOS cloud continuous integration servers&lt;/a&gt; was a great starting point. Since we are not developing an iOS only app, buddybuild was not considered. After some research, the two finalists were &lt;strong&gt;CircleCI&lt;/strong&gt; and &lt;strong&gt;Bitrise&lt;/strong&gt;.&lt;/p&gt;
 
-&lt;p&gt;1914 translation by H. Rackham&lt;/p&gt;
+&lt;h2&gt;Initial Steps&lt;/h2&gt;
 
-&lt;p&gt;&amp;ldquo;But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;My initial choice was CircleCI but even I was following a couple of &lt;a href="https://medium.com/sixt-labs-techblog/continuous-integration-and-delivery-at-sixt-91ca215670a0"&gt;tutorials&lt;/a&gt; I didn&amp;rsquo;t manage to get the signing working. It may offer more customisation than Bitrise but for &lt;strong&gt;someone who has no idea what&amp;rsquo;s he doing, having a building blocks interface as Bitrise does is key in such an early stage&lt;/strong&gt;.&lt;/p&gt;
 
-&lt;p&gt;Section 1.10.33 of &amp;ldquo;de Finibus Bonorum et Malorum&amp;rdquo;, written by Cicero in 45 BC&lt;/p&gt;
+&lt;p&gt;The customer service responded promptly to my questions as well, yet another reason to move to Bitrise.&lt;/p&gt;
 
-&lt;p&gt;&amp;ldquo;At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;All the steps included in one of our workflows… pretty self-explanatory&lt;/p&gt;
 
-&lt;p&gt;1914 translation by H. Rackham&lt;/p&gt;
+&lt;p&gt;After linking all the steps (using basically the recommended templates from Bitrise) the building platform was working… sorta.&lt;/p&gt;
 
-&lt;p&gt;&amp;ldquo;On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.&amp;rdquo;&lt;/p&gt;
+&lt;h2&gt;Limitations&lt;/h2&gt;
+
+&lt;p&gt;We had three main workflows: Staging, Release Candidate and Distribution.&lt;/p&gt;
+
+&lt;p&gt;Staging and Release Candidate would build from our &lt;code&gt;develop&lt;/code&gt; branch while Distribution would build from &lt;code&gt;master&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;If you are a single developer this setup works ok… but as the team grows, so does the need for more flexibility.&lt;/p&gt;
+
+&lt;p&gt;What if I want to build a release candidate and someone else modifies the &lt;code&gt;develop&lt;/code&gt; branch? What if I want to ship a version to the QA department but I want to continue the development (and therefore merging branches into &lt;code&gt;develop&lt;/code&gt;)? &lt;strong&gt;Having a single branch in these scenarios is bad&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2&gt;New branching model to the rescue&lt;/h2&gt;
+
+&lt;p&gt;At that point it was quite clear that we were in need of more flexibility. We added two extra branches to our setup: &lt;code&gt;beta&lt;/code&gt; and &lt;code&gt;release&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;develop&lt;/code&gt; would continue to reflect the current development state, generating new &lt;strong&gt;alpha versions&lt;/strong&gt; every time a new branch would be merged into &lt;code&gt;develop&lt;/code&gt;. As soon as the product manager required a new version to test a bunch of tickets together, we would manually merge from &lt;code&gt;develop&lt;/code&gt; into beta, creating a new &lt;strong&gt;beta version&lt;/strong&gt; app.&lt;/p&gt;
+
+&lt;p&gt;Creating a new beta version at a given point&lt;/p&gt;
+
+&lt;p&gt;That same approach would apply when several major features would be ready to integrate together in a more mature state, triggering a &lt;strong&gt;release candidate version&lt;/strong&gt;. A manual merge would be executed from &lt;code&gt;beta&lt;/code&gt; into &lt;code&gt;release&lt;/code&gt;, producing a new release candidate version app.&lt;/p&gt;
+
+&lt;p&gt;Different beta versions, manual merge into a new release candidate&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;This release candidate would the one potentially being shipped to iTunes Connect&lt;/strong&gt;. In case the final testing and the review process would be satisfactory, the app would be published and a manual merge from release into &lt;code&gt;master&lt;/code&gt; would be made, &lt;strong&gt;including a tag with the version number. The &lt;code&gt;master&lt;/code&gt; branch would ideally contain all the app versions published in the AppStore, properly tagged.&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;git checkout master
+git tag v.1.2          &lt;span class="c"&gt;# As an example&lt;/span&gt;
+git push &lt;span class="nt"&gt;--tags&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Merging into &lt;code&gt;master&lt;/code&gt; once the app is published, using a tag (v.1.2)&lt;/p&gt;
+
+&lt;p&gt;All different versions produce two .ipa files, one targeting our staging backend and the second one targeting our live services.&lt;/p&gt;
+
+&lt;p&gt;In order to make it easier for us (and for our testers) to tell which version targets what, we assigned different app icons including the version name and the backend environment:&lt;/p&gt;
+
+&lt;p&gt;These apps are uploaded to HockeyApp, where our team of testers can see and download them.
+And that&amp;rsquo;s our current setup. Thanks for reading! ✌️&lt;/p&gt;
 </content>
   </entry>
 </feed>

@@ -1,33 +1,67 @@
 <!doctype html>
 <html>
   <head>
-    <title>Test</title>
+    <title>🌳 Branching Model for iOS development. Continuous Integration with Bitrise</title>
     <link href="/stylesheets/site.css" rel="stylesheet" />
     <script src="/javascripts/site.js"></script>
   </head>
   <body>
 
     <div id="main" role="main">
-    <h1>Test</h1>
-      <p>The standard Lorem Ipsum passage, used since the 1500s</p>
+    <h1>🌳 Branching Model for iOS development. Continuous Integration with Bitrise</h1>
+      <p>When I started working at my current company, the setup we had for our iOS platform was hosted completely locally: <strong>Bitbucket Server</strong> for the repo, <strong>Jenkins</strong> as build platform and an own implementation of <strong>Hockeyapp</strong> for the distribution (as far as I understood, from the old days when Hockeyapp was an open source project). All that was run by an external agency (the one who had developed our app).</p>
 
-<p>&ldquo;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&rdquo;</p>
+<p>One of the first tasks I was assigned to was the internalisation of such services in order to become independent and take control of the development cycle.</p>
 
-<p>Section 1.10.32 of &ldquo;de Finibus Bonorum et Malorum&rdquo;, written by Cicero in 45 BC</p>
+<p>For hosting the repository we would use <strong>Bitbucket Cloud</strong> and <strong>Hockeyapp</strong> for distribution, but since our company does not host any server at all (our infrastructure runs mostly under the AWS umbrella), taking over the Jenkins implementation as it was, was not an option. <strong>I was in the market for a new cloud CI/CD platform.</strong></p>
 
-<p>&ldquo;Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?&rdquo;</p>
+<p><a href="https://medium.com/xcblog/olympics-of-top-5-cloud-ios-continuous-integration-servers-fcaa6c79468d">The Olympics of iOS cloud continuous integration servers</a> was a great starting point. Since we are not developing an iOS only app, buddybuild was not considered. After some research, the two finalists were <strong>CircleCI</strong> and <strong>Bitrise</strong>.</p>
 
-<p>1914 translation by H. Rackham</p>
+<h2>Initial Steps</h2>
 
-<p>&ldquo;But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?&rdquo;</p>
+<p>My initial choice was CircleCI but even I was following a couple of <a href="https://medium.com/sixt-labs-techblog/continuous-integration-and-delivery-at-sixt-91ca215670a0">tutorials</a> I didn&rsquo;t manage to get the signing working. It may offer more customisation than Bitrise but for <strong>someone who has no idea what&rsquo;s he doing, having a building blocks interface as Bitrise does is key in such an early stage</strong>.</p>
 
-<p>Section 1.10.33 of &ldquo;de Finibus Bonorum et Malorum&rdquo;, written by Cicero in 45 BC</p>
+<p>The customer service responded promptly to my questions as well, yet another reason to move to Bitrise.</p>
 
-<p>&ldquo;At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.&rdquo;</p>
+<p>All the steps included in one of our workflows… pretty self-explanatory</p>
 
-<p>1914 translation by H. Rackham</p>
+<p>After linking all the steps (using basically the recommended templates from Bitrise) the building platform was working… sorta.</p>
 
-<p>&ldquo;On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.&rdquo;</p>
+<h2>Limitations</h2>
+
+<p>We had three main workflows: Staging, Release Candidate and Distribution.</p>
+
+<p>Staging and Release Candidate would build from our <code>develop</code> branch while Distribution would build from <code>master</code>.</p>
+
+<p>If you are a single developer this setup works ok… but as the team grows, so does the need for more flexibility.</p>
+
+<p>What if I want to build a release candidate and someone else modifies the <code>develop</code> branch? What if I want to ship a version to the QA department but I want to continue the development (and therefore merging branches into <code>develop</code>)? <strong>Having a single branch in these scenarios is bad</strong>.</p>
+
+<h2>New branching model to the rescue</h2>
+
+<p>At that point it was quite clear that we were in need of more flexibility. We added two extra branches to our setup: <code>beta</code> and <code>release</code>.</p>
+
+<p><code>develop</code> would continue to reflect the current development state, generating new <strong>alpha versions</strong> every time a new branch would be merged into <code>develop</code>. As soon as the product manager required a new version to test a bunch of tickets together, we would manually merge from <code>develop</code> into beta, creating a new <strong>beta version</strong> app.</p>
+
+<p>Creating a new beta version at a given point</p>
+
+<p>That same approach would apply when several major features would be ready to integrate together in a more mature state, triggering a <strong>release candidate version</strong>. A manual merge would be executed from <code>beta</code> into <code>release</code>, producing a new release candidate version app.</p>
+
+<p>Different beta versions, manual merge into a new release candidate</p>
+
+<p><strong>This release candidate would the one potentially being shipped to iTunes Connect</strong>. In case the final testing and the review process would be satisfactory, the app would be published and a manual merge from release into <code>master</code> would be made, <strong>including a tag with the version number. The <code>master</code> branch would ideally contain all the app versions published in the AppStore, properly tagged.</strong></p>
+<div class="highlight"><pre class="highlight shell"><code>git checkout master
+git tag v.1.2          <span class="c"># As an example</span>
+git push <span class="nt">--tags</span>
+</code></pre></div>
+<p>Merging into <code>master</code> once the app is published, using a tag (v.1.2)</p>
+
+<p>All different versions produce two .ipa files, one targeting our staging backend and the second one targeting our live services.</p>
+
+<p>In order to make it easier for us (and for our testers) to tell which version targets what, we assigned different app icons including the version name and the backend environment:</p>
+
+<p>These apps are uploaded to HockeyApp, where our team of testers can see and download them.
+And that&rsquo;s our current setup. Thanks for reading! ✌️</p>
 
     </div>
   </body>

@@ -14,11 +14,12 @@
 html {
   margin-left: auto;
   margin-right: auto;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
   background-color: #ffffff;
-  line-height: 1.5em;
   color: #333;
   font-family: -apple-system, BlinkMacSystemFont, "Avenir Next", "Avenir",
     "Segoe UI", "Lucida Grande", "Helvetica Neue", "Helvetica", "Fira Sans",
@@ -26,6 +27,9 @@ body {
     "Franklin Gothic Medium", "Century Gothic", "Liberation Sans", sans-serif;
   padding: 18vh 1rem;
   text-align: left;
+  line-height: 1.5em;
+  font-size: 1.2em;
+
 }
 
 footer {
@@ -37,6 +41,11 @@ footer {
 
 h1 {
   text-align: left;
+  line-height: 1.2em;
+}
+
+h2 {
+  line-height: 1.2em;
 }
 
 a {
@@ -53,12 +62,18 @@ a {
   width: 10rem;
 }
 
+code {
+  background-color: rgba(0, 0, 0, 0.0470588);
+  font-family: Menlo, Monaco, "Courier New", Courier, monospace;
+  font-size: 0.9em;
+}
+
 .highlight {
   text-align: left;
   padding: 8pt;
   border-radius: 4pt;
   word-wrap: break-word;
-  font-size: 1.1em;
+  font-family: Menlo, Monaco, "Courier New", Courier, monospace;
 }
 
 /* Dracula Theme v1.2.5
