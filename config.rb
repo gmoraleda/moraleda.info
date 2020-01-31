@@ -1,3 +1,5 @@
+set :site_url, "http://www.moraleda.info"
+
 set :markdown_engine, :redcarpet
 set :markdown, :fenced_code_blocks => true, :smartypants => true
 set :fonts_dir,  'fonts'
@@ -16,6 +18,7 @@ activate :blog do |blog|
   blog.permalink = "{year}/{month}/{day}/{title}.html"
   blog.tag_template = "tag.html"
   blog.calendar_template = "calendar.html"
+  blog.layout
 end
 
 # Layouts
