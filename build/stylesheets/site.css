@@ -40,21 +40,17 @@ a {
   a:focus, a:hover {
     color: rgba(0, 0, 0, 0.6); }
 
-.middleman-logo {
-  margin-bottom: 1rem;
-  width: 10rem; }
-
 code {
   background-color: rgba(0, 0, 0, 0.0470588);
   font-family: Menlo, Monaco, "Courier New", Courier, monospace;
-  font-size: 0.9em; }
+  font-size: 0.9em;
+  padding: .2em .4em;
+  background-color: rgba(27, 31, 35, 0.05);
+  border-radius: 3px;
+  display: inline; }
 
-.highlight {
-  text-align: left;
-  padding: 8pt;
-  border-radius: 4pt;
-  word-wrap: break-word;
-  font-family: Menlo, Monaco, "Courier New", Courier, monospace; }
+pre code {
+  padding: 0pt; }
 
 /* Dracula Theme v1.2.5
  *
@@ -74,7 +70,12 @@ code {
 
 .highlight {
   background: #282a36;
-  color: #f8f8f2; }
+  color: #f8f8f2;
+  text-align: left;
+  border-radius: 4pt;
+  padding: 8pt !important;
+  word-wrap: break-word;
+  display: block; }
 
 .highlight .c {
   color: #6272a4; }
