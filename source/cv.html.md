@@ -1,12 +1,12 @@
-# Curriculum Vitae
+# Curriculum vitae
 
-## Education
+## 🎓 Education
 - BSc. and MSc. in Telecommunications Engineering | Universitat Pompeu Fabra, Barcelona
 2006 – 2011.
 Major: Telematics
 - Exchange Semester 2009-2010: Karlstad Universitet – Computer Science
 
-## Experience
+## 👨‍💻 Experience
 ### iOS Developer | Cluno GmbH, Munich August 2018 – *Present*
 Cluno App (Swift): Cluno is a new mobility concept base on a car subscription model. The iOS app allows users to browse a portfolio and go through the car booking process. Implementation of a profiling process to identify users and their purchasing power, including a solvency check. Maintenance and development of new features. Setup of the whole development infrastructure, including JIRA workflows, integration with Bitbucket and Bitrise as CI/CD platform. Implementation of best practices in the development workflow (Gitflow, Swiftformat, Swiftlint).
 
@@ -56,7 +56,7 @@ Ordering and tracking of telecom services (fix voice, mobile services, WAN and W
 
 **Technologies and tools:**  BMC Remedy, MS Project, MS Visio, WAN, W/LAN, MPLS, fix and mobile telephony
 
-## Other
+## 🌎 Other
 ### Sabbatical – Round the world | Full-Time Travellers - fulltimetravellers.net, October 2016 – November 2017
 
 After the summer of 2016 I took one year off to travel the world. During our adventure I created a blog and a Facebook page to post our stories, shoot videos and use it as travel journal.
@@ -64,9 +64,7 @@ As side project I worked as freelancer translating tourism promotional texts for
 
 **Technologies and tools:**  WordPress, YouTube Studio, Final Cut X Pro, Adobe Photoshop CS6, Adobe After Effects CC, HTML, CSS
 
-## Languages
-
-Languages: 
+## 📢 Languages
 
 - German (fluent)
 - English (fluent)
