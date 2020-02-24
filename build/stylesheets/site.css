@@ -1,6 +1,7 @@
 @media only screen and (min-width: 960px) {
   html {
-    width: 70%; } }
+    width: 70%;
+    max-width: 1000px; } }
 
 @media only screen and (max-device-width: 480px) {
   html {
@@ -20,6 +21,21 @@ body {
   text-align: left;
   line-height: 1.5em;
   font-size: 1.2em; }
+
+img {
+  width: 75%;
+  max-width: 800px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+
+img + em {
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  color: rgba(0, 0, 0, 0.541176);
+  font-size: 0.8em; }
 
 footer {
   position: -webkit-sticky;

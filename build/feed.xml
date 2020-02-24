@@ -10,29 +10,11 @@
     <name>Blog Author</name>
   </author>
   <entry>
-    <title>Test2</title>
-    <link rel="alternate" href="http://blog.url.com/blog/2020/01/30/test2.html"/>
-    <id>http://blog.url.com/blog/2020/01/30/test2.html</id>
-    <published>2020-01-30T21:35:00+01:00</published>
-    <updated>2020-02-24T14:26:18+01:00</updated>
-    <author>
-      <name>Article Author</name>
-    </author>
-    <content type="html">&lt;p&gt;Example:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre class="highlight swift"&gt;&lt;code&gt;&lt;span class="kd"&gt;struct&lt;/span&gt; &lt;span class="kt"&gt;Person&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="k"&gt;let&lt;/span&gt; &lt;span class="nv"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kt"&gt;String&lt;/span&gt;
-  &lt;span class="k"&gt;let&lt;/span&gt; &lt;span class="nv"&gt;job&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kt"&gt;String&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-
-&lt;span class="k"&gt;let&lt;/span&gt; &lt;span class="nv"&gt;me&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;Person&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;"G. Moraleda"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;job&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;"iOS Engineer"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
-  </entry>
-  <entry>
     <title>🌳 Branching Model for iOS development. Continuous Integration with Bitrise</title>
-    <link rel="alternate" href="http://blog.url.com/blog/2020/01/30/test.html"/>
-    <id>http://blog.url.com/blog/2020/01/30/test.html</id>
+    <link rel="alternate" href="http://blog.url.com/blog/2020/01/30/branching-model.html"/>
+    <id>http://blog.url.com/blog/2020/01/30/branching-model.html</id>
     <published>2020-01-30T21:35:00+01:00</published>
-    <updated>2020-02-24T14:26:18+01:00</updated>
+    <updated>2020-02-24T15:57:32+01:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -50,7 +32,8 @@
 
 &lt;p&gt;The customer service responded promptly to my questions as well, yet another reason to move to Bitrise.&lt;/p&gt;
 
-&lt;p&gt;All the steps included in one of our workflows… pretty self-explanatory&lt;/p&gt;
+&lt;p&gt;&lt;img src="/blog/2020-01-30/bitrise.png" title="All the steps included in one of our workflows… pretty self-explanatory" alt="Bitrise" /&gt;
+&lt;em&gt;All the steps included in one of our workflows… pretty self-explanatory&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;After linking all the steps (using basically the recommended templates from Bitrise) the building platform was working… sorta.&lt;/p&gt;
 
@@ -70,22 +53,27 @@
 
 &lt;p&gt;&lt;code&gt;develop&lt;/code&gt; would continue to reflect the current development state, generating new &lt;strong&gt;alpha versions&lt;/strong&gt; every time a new branch would be merged into &lt;code&gt;develop&lt;/code&gt;. As soon as the product manager required a new version to test a bunch of tickets together, we would manually merge from &lt;code&gt;develop&lt;/code&gt; into beta, creating a new &lt;strong&gt;beta version&lt;/strong&gt; app.&lt;/p&gt;
 
-&lt;p&gt;Creating a new beta version at a given point&lt;/p&gt;
+&lt;p&gt;&lt;img src="/blog/2020-01-30/new-scenario.jpeg" title="Creating a new beta version at a given point" alt="New scenario" /&gt;
+&lt;em&gt;Creating a new beta version at a given point&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;That same approach would apply when several major features would be ready to integrate together in a more mature state, triggering a &lt;strong&gt;release candidate version&lt;/strong&gt;. A manual merge would be executed from &lt;code&gt;beta&lt;/code&gt; into &lt;code&gt;release&lt;/code&gt;, producing a new release candidate version app.&lt;/p&gt;
 
-&lt;p&gt;Different beta versions, manual merge into a new release candidate&lt;/p&gt;
+&lt;p&gt;&lt;img src="/blog/2020-01-30/beta-release.gif" title="Different beta versions, manual merge into a new release candidate" alt="Beta release" /&gt;
+&lt;em&gt;Different beta versions, manual merge into a new release candidate&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;This release candidate would the one potentially being shipped to iTunes Connect&lt;/strong&gt;. In case the final testing and the review process would be satisfactory, the app would be published and a manual merge from release into &lt;code&gt;master&lt;/code&gt; would be made, &lt;strong&gt;including a tag with the version number. The &lt;code&gt;master&lt;/code&gt; branch would ideally contain all the app versions published in the AppStore, properly tagged.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;This release candidate would the one potentially being shipped to iTunes Connect&lt;/strong&gt;. In case the final testing and the review process would be satisfactory, the app would be published and a manual merge from release into &lt;code&gt;master&lt;/code&gt; would be made, &lt;strong&gt;including a tag with the version number. The&lt;/strong&gt; &lt;code&gt;master&lt;/code&gt; &lt;strong&gt;branch would ideally contain all the app versions published in the AppStore, properly tagged.&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;git checkout master
 git tag v.1.2          &lt;span class="c"&gt;# As an example&lt;/span&gt;
 git push &lt;span class="nt"&gt;--tags&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Merging into &lt;code&gt;master&lt;/code&gt; once the app is published, using a tag (v.1.2)&lt;/p&gt;
+&lt;p&gt;&lt;img src="/blog/2020-01-30/release-master.jpeg" title="Merging into `master` once the app is published, using a tag (v.1.2)" alt="Release master" /&gt;
+&lt;em&gt;Merging into &lt;code&gt;master&lt;/code&gt; once the app is published, using a tag (v.1.2)&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;All different versions produce two .ipa files, one targeting our staging backend and the second one targeting our live services.&lt;/p&gt;
 
 &lt;p&gt;In order to make it easier for us (and for our testers) to tell which version targets what, we assigned different app icons including the version name and the backend environment:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="/blog/2020-01-30/app-versions.jpeg" alt="App versions" /&gt;&lt;/p&gt;
 
 &lt;p&gt;These apps are uploaded to HockeyApp, where our team of testers can see and download them.
 And that&amp;rsquo;s our current setup. Thanks for reading! ✌️&lt;/p&gt;

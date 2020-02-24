@@ -20,7 +20,8 @@ My initial choice was CircleCI but even I was following a couple of [tutorials][
 
 The customer service responded promptly to my questions as well, yet another reason to move to Bitrise.
 
-All the steps included in one of our workflows… pretty self-explanatory
+![](./2020-01-30/bitrise.png "All the steps included in one of our workflows… pretty self-explanatory")
+*All the steps included in one of our workflows… pretty self-explanatory*
 
 After linking all the steps (using basically the recommended templates from Bitrise) the building platform was working… sorta.
 
@@ -40,13 +41,15 @@ At that point it was quite clear that we were in need of more flexibility. We ad
 
 `develop` would continue to reflect the current development state, generating new **alpha versions** every time a new branch would be merged into `develop`. As soon as the product manager required a new version to test a bunch of tickets together, we would manually merge from `develop` into beta, creating a new **beta version** app.
 
-Creating a new beta version at a given point
+![](./2020-01-30/new-scenario.jpeg "Creating a new beta version at a given point")
+*Creating a new beta version at a given point*
 
 That same approach would apply when several major features would be ready to integrate together in a more mature state, triggering a **release candidate version**. A manual merge would be executed from `beta` into `release`, producing a new release candidate version app.
 
-Different beta versions, manual merge into a new release candidate
+![](./2020-01-30/beta-release.gif "Different beta versions, manual merge into a new release candidate")
+*Different beta versions, manual merge into a new release candidate*
 
-**This release candidate would the one potentially being shipped to iTunes Connect**. In case the final testing and the review process would be satisfactory, the app would be published and a manual merge from release into `master` would be made, **including a tag with the version number. The `master` branch would ideally contain all the app versions published in the AppStore, properly tagged.**
+**This release candidate would the one potentially being shipped to iTunes Connect**. In case the final testing and the review process would be satisfactory, the app would be published and a manual merge from release into `master` would be made, **including a tag with the version number. The** `master` **branch would ideally contain all the app versions published in the AppStore, properly tagged.**
 
 ```bash
 git checkout master
@@ -54,11 +57,14 @@ git tag v.1.2          # As an example
 git push --tags
 ```
 
-Merging into `master` once the app is published, using a tag (v.1.2)
+![](./2020-01-30/release-master.jpeg "Merging into `master` once the app is published, using a tag (v.1.2)")
+*Merging into `master` once the app is published, using a tag (v.1.2)*
 
 All different versions produce two .ipa files, one targeting our staging backend and the second one targeting our live services.
 
 In order to make it easier for us (and for our testers) to tell which version targets what, we assigned different app icons including the version name and the backend environment:
+
+![](./2020-01-30/app-versions.jpeg)
 
 These apps are uploaded to HockeyApp, where our team of testers can see and download them.
 And that's our current setup. Thanks for reading! ✌️
