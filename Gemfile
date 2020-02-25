@@ -11,3 +11,4 @@ gem 'rouge', '~> 3.15'
 gem "middleman-blog"
 gem "middleman-livereload", "~> 3.4.3"
 gem 'builder', '~> 3.0'
+gem 'nokogiri'

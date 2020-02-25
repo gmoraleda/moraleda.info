@@ -12,9 +12,9 @@ per_page: 10
 <% end %>
 <% page_articles.each_with_index do |article, i| %>
   <h2><%= link_to article.title, article %> - <span><%= article.date.strftime('%d %b, %Y') %></span></h2>
-  <!-- use article.summary(250) if you have Nokogiri available to show just
-       the first 250 characters -->
-  <%= article.body %>
+  <%= article.summary(750) %>
+  <%= link_to 'Read more…', article %>  
+  <%# <%= article.body %>
 <% end %>
 <% if paginate %>
   <% if next_page %>
