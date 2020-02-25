@@ -198,7 +198,7 @@ git checkout &lt;span class="nt"&gt;--&lt;/span&gt; &lt;span class="sb"&gt;`&lt;
     <link rel="alternate" href="http://blog.url.com/blog/2020/01/30/branching-model.html"/>
     <id>http://blog.url.com/blog/2020/01/30/branching-model.html</id>
     <published>2020-01-30T21:35:00+01:00</published>
-    <updated>2020-02-25T11:50:53+01:00</updated>
+    <updated>2020-02-25T12:56:15+01:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -209,8 +209,6 @@ git checkout &lt;span class="nt"&gt;--&lt;/span&gt; &lt;span class="sb"&gt;`&lt;
 &lt;p&gt;For hosting the repository we would use &lt;strong&gt;Bitbucket Cloud&lt;/strong&gt; and &lt;strong&gt;Hockeyapp&lt;/strong&gt; for distribution, but since our company does not host any server at all (our infrastructure runs mostly under the AWS umbrella), taking over the Jenkins implementation as it was, was not an option. &lt;strong&gt;I was in the market for a new cloud CI/CD platform.&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="https://medium.com/xcblog/olympics-of-top-5-cloud-ios-continuous-integration-servers-fcaa6c79468d"&gt;The Olympics of iOS cloud continuous integration servers&lt;/a&gt; was a great starting point. Since we are not developing an iOS only app, buddybuild was not considered. After some research, the two finalists were &lt;strong&gt;CircleCI&lt;/strong&gt; and &lt;strong&gt;Bitrise&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;
 
 &lt;h2&gt;Initial Steps&lt;/h2&gt;
 

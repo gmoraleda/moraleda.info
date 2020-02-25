@@ -14,8 +14,6 @@ For hosting the repository we would use **Bitbucket Cloud** and **Hockeyapp** fo
 
 [The Olympics of iOS cloud continuous integration servers][olimpics] was a great starting point. Since we are not developing an iOS only app, buddybuild was not considered. After some research, the two finalists were **CircleCI** and **Bitrise**.
 
-READMORE
-
 ## Initial Steps
 
 My initial choice was CircleCI but even I was following a couple of [tutorials][tutorials] I didn't manage to get the signing working. It may offer more customisation than Bitrise but for **someone who has no idea what's he doing, having a building blocks interface as Bitrise does is key in such an early stage**.
