@@ -52,8 +52,11 @@ h1 {
 h2 {
   line-height: 1.2em; }
 
+h2 a {
+  color: #333; }
+
 a {
-  color: rgba(0, 0, 0, 0.7); }
+  color: #0366d6; }
   a:focus, a:hover {
     color: rgba(0, 0, 0, 0.6); }
 
@@ -63,7 +66,7 @@ blockquote {
   border-left: 5px solid rgba(0, 0, 0, 0.0470588);
   padding: 0.5em 15px; }
 
-code {
+p code {
   background-color: rgba(0, 0, 0, 0.0470588);
   font-family: Menlo, Monaco, "Courier New", Courier, monospace;
   font-size: 0.8em;
@@ -71,19 +74,56 @@ code {
   border-radius: 3px;
   display: inline; }
 
-pre code {
-  padding: 0pt; }
+.highlight {
+  text-align: left;
+  border-radius: 4pt;
+  padding: 8pt !important;
+  line-height: 1em;
+  display: block;
+  overflow-wrap: break-word;
+  font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 13px;
+  height: auto;
+  line-height: 20px;
+  -moz-tab-size: 8;
+    -o-tab-size: 8;
+       tab-size: 8;
+  white-space: pre; }
 
-/* Dracula Theme v1.2.5
- *
- * https://github.com/zenorocha/dracula-theme
- *
- * Copyright 2016, All rights reserved
- *
- * Code licensed under the MIT license
- * http://zenorocha.mit-license.org
- *
- * @author Rob G <wowmotty@gmail.com>
- * @author Chris Bracco <chris@cbracco.me>
- * @author Zeno Rocha <hi@zenorocha.com>
- */
+.highlight .c,
+.highlight .ch,
+.highlight .cd,
+.highlight .cm,
+.highlight .cpf,
+.highlight .c1 {
+  color: #6a737d; }
+
+.highlight .c1,
+.highlight .nt,
+.highlight .nb,
+.highlight .nb {
+  color: #0366d6; }
+
+.highlight .k {
+  color: #d73a49;
+  font-weight: normal; }
+
+.highlight .na,
+.highlight .no,
+.highlight .vc,
+.highlight .vg,
+.highlight .vi,
+.highlight .nv,
+.highlight .vm {
+  color: #24292e; }
+
+.highlight .kt,
+.highlight .nc {
+  color: #6f42c1;
+  font-weight: normal; }
+
+.highlight .kd {
+  font-weight: normal; }
+
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #032f62; }

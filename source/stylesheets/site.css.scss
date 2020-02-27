@@ -1,4 +1,4 @@
-@import 'highlighting.css';
+@import "highlighting.css";
 
 @media only screen and (min-width: 960px) {
   html {
@@ -65,8 +65,12 @@ h2 {
   line-height: 1.2em;
 }
 
+h2 a {
+  color: #333;
+}
+
 a {
-  color: rgba(#000, 0.7);
+  color: rgb(3, 102, 214);
 
   &:focus,
   &:hover {
@@ -81,7 +85,7 @@ blockquote {
   padding: 0.5em 15px;
 }
 
-code {
+p code {
   background-color: rgba(0, 0, 0, 0.0470588);
   font-family: Menlo, Monaco, "Courier New", Courier, monospace;
   font-size: 0.8em;
@@ -90,15 +94,65 @@ code {
   display: inline;
 }
 
-pre code {
-  padding: 0pt;
-}
-
 .highlight {
-  color: #f8f8f2;
   text-align: left;
   border-radius: 4pt;
   padding: 8pt !important;
-  line-height: 1.4em;
-  overflow: auto;
+  line-height: 1em;
+  display: block;
+  overflow-wrap: break-word;
+  font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 13px;
+  height: auto;
+  line-height: 20px;
+  tab-size: 8;
+  white-space: pre;
+  // width: auto;
+  // word-wrap: normal;
+}
+
+.highlight .c,
+.highlight .ch,
+.highlight .cd,
+.highlight .cm,
+.highlight .cpf,
+.highlight .c1 {
+  color: rgb(106, 115, 125);
+}
+
+.highlight .c1,
+.highlight .nt,
+.highlight .nb,
+.highlight .nb {
+  color: rgb(3, 102, 214);
+}
+
+.highlight .k {
+  color: rgb(215, 58, 73);
+  font-weight: normal;
+}
+
+.highlight .na,
+.highlight .no,
+.highlight .vc,
+.highlight .vg,
+.highlight .vi,
+.highlight .nv,
+.highlight .vm {
+  color: rgb(36, 41, 46);
+}
+
+.highlight .kt,
+.highlight .nc {
+
+  color: rgb(111, 66, 193);
+  font-weight: normal;
+}
+
+.highlight .kd {
+  font-weight: normal;
+}
+
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: rgb(3, 47, 98);
 }
