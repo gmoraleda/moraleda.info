@@ -8,9 +8,9 @@ Major: Telematics
 
 ## 👨‍💻 Experience
 ### Mobile Developer | Cluno GmbH, Munich August 2018 – *Present*
-Cluno App (Swift/Kotlin): Cluno is a new mobility concept base on a car subscription model. The iOS and Android apps allow users to browse a portfolio and go through the car booking process. Implementation of a profiling process to identify users and their purchasing power, including a solvency check. Maintenance and development of new features. Setup of the whole development infrastructure, including JIRA workflows, integration with Bitbucket and Bitrise as CI/CD platform. Implementation of best practices in the development workflow (Gitflow, formatters, linters, pull-request review automation, etc.).
+Cluno App (Swift/Kotlin): Cluno is a new mobility concept base on a car subscription model. The iOS and Android apps allow users to browse a portfolio and go through the car booking process. Implementation of a profiling process to identify users and their purchasing power, including a solvency check. Maintenance and development of new features. Overtook development from external agency. Setup of the whole development infrastructure, including JIRA workflows, integration with Github and Bitrise as CI/CD platform. Implementation of best practices in the development workflow (Gitflow, formatters, linters, pull-request review automation, etc.).
 
-**Technologies and tools:** Swift, Kotlin, Xcode, Android Studio, MVVM, MVC, RxSwift, GraphQL, AWS Cognito, Snapkit, Alamofire, GooglePlaces, Git, Zeplin, Bitrise, Firebase, Amplitude, Swift Package Manager, Dashing, Ruby, CoffeeScript
+**Technologies and tools:** Swift, Kotlin, Xcode, Android Studio, MVVM, MVC, RxSwift, GraphQL, AWS Cognito, Snapkit, Alamofire, GooglePlaces, Git, Zeplin, Bitrise, Firebase, Amplitude, Swift Package Manager, Danger, Dashing, Ruby, CoffeeScript
 
 ***
 
