@@ -43,14 +43,14 @@ IT Consultant in several telecom and automotive projects:
 
 - 2015 – 2016: BMW Connected Drive: Rollout Manager Eastern Europe and Technical Market Development. Coordination role for the implementation of new features.
 - 2014 – 2015: BMW Central ECU Change Manager
-- 2014 – 2014: Telefónica – O2: mVoLTE Project. Analyze and reporting of mVoLTE (mobile
+- 2014 – 2014: Telefónica – O<sub>2</sub>: mVoLTE Project. Analyze and reporting of mVoLTE (mobile
 Voice over LTE) testing activities.
 
 **Technologies and tools:**  JIRA, MS Excel, HP Quality Center, IBM Rational
 
 ***
 
-### Operations Manager | Telefónica – O<sub>2</sub> , Warsaw and Vienna, February 2012 – September 2013
+### Operations Manager | Telefónica – O<sub>2</sub>, Warsaw and Vienna, February 2012 – September 2013
 
 Ordering and tracking of telecom services (fix voice, mobile services, WAN and W/LAN) for our customers in the Austrian and Polish market. Local project coordination in a Pan-European project for DHL.
 
