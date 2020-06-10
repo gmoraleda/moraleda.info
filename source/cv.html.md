@@ -50,7 +50,7 @@ Voice over LTE) testing activities.
 
 ***
 
-### Operations Manager | Telefónica – O2 , Warsaw and Vienna, February 2012 – September 2013
+### Operations Manager | Telefónica – O<sub>2</sub> , Warsaw and Vienna, February 2012 – September 2013
 
 Ordering and tracking of telecom services (fix voice, mobile services, WAN and W/LAN) for our customers in the Austrian and Polish market. Local project coordination in a Pan-European project for DHL.
 
