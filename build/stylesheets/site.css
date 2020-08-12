@@ -39,7 +39,6 @@ img + em {
   font-size: 0.8em; }
 
 footer {
-  position: -webkit-sticky;
   position: sticky;
   clear: both;
   text-align: center;

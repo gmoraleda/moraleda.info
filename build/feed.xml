@@ -24,7 +24,7 @@
 
 &lt;p&gt;Our first approach at &lt;a href="https://www.cluno.com/en/career/"&gt;Cluno&lt;/a&gt; was to generate different icons for different versions and include all of them in the assets catalogue. This methods works straightforward but has two problems. First of all, it is not very flexible. The icons needs to be designed, attached to the project, and mapped to each configuration:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src="/blog/2020-02-25/configurations.png" alt="Configurations" /&gt;
+&lt;p&gt;&lt;img src="/blog/2020-02-25/configurations.png" alt="" /&gt;
 &lt;em&gt;App Icons in Build Settings section&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;You have to ship you app with more icons than it should, increasing as well the binary size.&lt;/p&gt;
@@ -47,7 +47,7 @@
 
 &lt;p&gt;In our project folder we created two scripts that are called during the build phases:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src="/blog/2020-02-25/phases.png" alt="Phases" /&gt;
+&lt;p&gt;&lt;img src="/blog/2020-02-25/phases.png" alt="" /&gt;
 &lt;em&gt;Build phases&lt;/em&gt;&lt;/p&gt;
 
 &lt;h4&gt;Icon generation script:&lt;/h4&gt;
@@ -186,7 +186,7 @@ git checkout &lt;span class="nt"&gt;--&lt;/span&gt; &lt;span class="sb"&gt;`&lt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h3&gt;… and then the final result 🎉&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src="/blog/2020-02-25/icons.png" alt="Icons" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="/blog/2020-02-25/icons.png" alt="" /&gt;&lt;/p&gt;
 
 &lt;p&gt;Now is super convenient to work with different configurations, knowing that the icons are going to be up to date 😎.&lt;/p&gt;
 
@@ -216,7 +216,7 @@ git checkout &lt;span class="nt"&gt;--&lt;/span&gt; &lt;span class="sb"&gt;`&lt;
 
 &lt;p&gt;The customer service responded promptly to my questions as well, yet another reason to move to Bitrise.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src="/blog/2020-01-30/bitrise.png" title="All the steps included in one of our workflows… pretty self-explanatory" alt="Bitrise" /&gt;
+&lt;p&gt;&lt;img src="/blog/2020-01-30/bitrise.png" title="All the steps included in one of our workflows… pretty self-explanatory" alt="" /&gt;
 &lt;em&gt;All the steps included in one of our workflows… pretty self-explanatory&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;After linking all the steps (using basically the recommended templates from Bitrise) the building platform was working… sorta.&lt;/p&gt;
@@ -237,12 +237,12 @@ git checkout &lt;span class="nt"&gt;--&lt;/span&gt; &lt;span class="sb"&gt;`&lt;
 
 &lt;p&gt;&lt;code&gt;develop&lt;/code&gt; would continue to reflect the current development state, generating new &lt;strong&gt;alpha versions&lt;/strong&gt; every time a new branch would be merged into &lt;code&gt;develop&lt;/code&gt;. As soon as the product manager required a new version to test a bunch of tickets together, we would manually merge from &lt;code&gt;develop&lt;/code&gt; into beta, creating a new &lt;strong&gt;beta version&lt;/strong&gt; app.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src="/blog/2020-01-30/new-scenario.jpeg" title="Creating a new beta version at a given point" alt="New scenario" /&gt;
+&lt;p&gt;&lt;img src="/blog/2020-01-30/new-scenario.jpeg" title="Creating a new beta version at a given point" alt="" /&gt;
 &lt;em&gt;Creating a new beta version at a given point&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;That same approach would apply when several major features would be ready to integrate together in a more mature state, triggering a &lt;strong&gt;release candidate version&lt;/strong&gt;. A manual merge would be executed from &lt;code&gt;beta&lt;/code&gt; into &lt;code&gt;release&lt;/code&gt;, producing a new release candidate version app.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src="/blog/2020-01-30/beta-release.gif" title="Different beta versions, manual merge into a new release candidate" alt="Beta release" /&gt;
+&lt;p&gt;&lt;img src="/blog/2020-01-30/beta-release.gif" title="Different beta versions, manual merge into a new release candidate" alt="" /&gt;
 &lt;em&gt;Different beta versions, manual merge into a new release candidate&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;This release candidate would the one potentially being shipped to iTunes Connect&lt;/strong&gt;. In case the final testing and the review process would be satisfactory, the app would be published and a manual merge from release into &lt;code&gt;master&lt;/code&gt; would be made, &lt;strong&gt;including a tag with the version number. The&lt;/strong&gt; &lt;code&gt;master&lt;/code&gt; &lt;strong&gt;branch would ideally contain all the app versions published in the AppStore, properly tagged.&lt;/strong&gt;&lt;/p&gt;
@@ -250,14 +250,14 @@ git checkout &lt;span class="nt"&gt;--&lt;/span&gt; &lt;span class="sb"&gt;`&lt;
 git tag v.1.2          &lt;span class="c"&gt;# As an example&lt;/span&gt;
 git push &lt;span class="nt"&gt;--tags&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src="/blog/2020-01-30/release-master.jpeg" title="Merging into `master` once the app is published, using a tag (v.1.2)" alt="Release master" /&gt;
+&lt;p&gt;&lt;img src="/blog/2020-01-30/release-master.jpeg" title="Merging into `master` once the app is published, using a tag (v.1.2)" alt="" /&gt;
 &lt;em&gt;Merging into &lt;code&gt;master&lt;/code&gt; once the app is published, using a tag (v.1.2)&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;All different versions produce two .ipa files, one targeting our staging backend and the second one targeting our live services.&lt;/p&gt;
 
 &lt;p&gt;In order to make it easier for us (and for our testers) to tell which version targets what, we assigned different app icons including the version name and the backend environment:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src="/blog/2020-01-30/app-versions.jpeg" alt="App versions" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="/blog/2020-01-30/app-versions.jpeg" alt="" /&gt;&lt;/p&gt;
 
 &lt;p&gt;These apps are uploaded to HockeyApp, where our team of testers can see and download them.
 And that&amp;rsquo;s our current setup. Thanks for reading! ✌️&lt;/p&gt;
