@@ -1,0 +1,74 @@
+I"�<p>When I started working at my current company, the setup we had for our iOS platform was hosted completely locally: <strong>Bitbucket Server</strong> for the repo, <strong>Jenkins</strong> as build platform and an own implementation of <strong>Hockeyapp</strong> for the distribution (as far as I understood, from the old days when Hockeyapp was an open source project). All that was run by an external agency (the one who had developed our app).</p>
+
+<p>One of the first tasks I was assigned to was the internalisation of such services in order to become independent and take control of the development cycle.</p>
+
+<p>For hosting the repository we would use <strong>Bitbucket Cloud</strong> and <strong>Hockeyapp</strong> for distribution, but since our company does not host any server at all (our infrastructure runs mostly under the AWS umbrella), taking over the Jenkins implementation as it was, was not an option. <strong>I was in the market for a new cloud CI/CD platform.</strong></p>
+
+<p><a href="https://medium.com/xcblog/olympics-of-top-5-cloud-ios-continuous-integration-servers-fcaa6c79468d">The Olympics of iOS cloud continuous integration servers</a> was a great starting point. Since we are not developing an iOS only app, buddybuild was not considered. After some research, the two finalists were <strong>CircleCI</strong> and <strong>Bitrise</strong>.</p>
+
+<h2 id="initial-steps">Initial Steps</h2>
+
+<p>My initial choice was CircleCI but even I was following a couple of <a href="https://medium.com/sixt-labs-techblog/continuous-integration-and-delivery-at-sixt-91ca215670a0">tutorials</a> I didn’t manage to get the signing working. It may offer more customisation than Bitrise but for <strong>someone who has no idea what’s he doing, having a building blocks interface as Bitrise does is key in such an early stage</strong>.</p>
+
+<p>The customer service responded promptly to my questions as well, yet another reason to move to Bitrise.</p>
+
+<figure class="image">
+    <img src="/assets/blog/bitrise.png" alt="All the steps included in one of our workflows… pretty self-explanatory" />
+    <figcaption>All the steps included in one of our workflows… pretty self-explanatory</figcaption>
+  </figure>
+
+<p>After linking all the steps (using basically the recommended templates from Bitrise) the building platform was working… sorta.</p>
+
+<h2 id="limitations">Limitations</h2>
+
+<p>We had three main workflows: Staging, Release Candidate and Distribution.</p>
+
+<p>Staging and Release Candidate would build from our <code>develop</code> branch while Distribution would build from <code>master</code>.</p>
+
+<p>If you are a single developer this setup works ok… but as the team grows, so does the need for more flexibility.</p>
+
+<p>What if I want to build a release candidate and someone else modifies the <code>develop</code> branch? What if I want to ship a version to the QA department but I want to continue the development (and therefore merging branches into <code>develop</code>)? <strong>Having a single branch in these scenarios is bad</strong>.</p>
+
+<h2 id="new-branching-model-to-therescue">New branching model to the rescue</h2>
+
+<p>At that point it was quite clear that we were in need of more flexibility. We added two extra branches to our setup: <code>beta</code> and <code>release</code>.</p>
+
+<p><code>develop</code> would continue to reflect the current development state, generating new <strong>alpha versions</strong> every time a new branch would be merged into <code>develop</code>. As soon as the product manager required a new version to test a bunch of tickets together, we would manually merge from <code>develop</code> into beta, creating a new <strong>beta version</strong> app.</p>
+
+<figure class="image">
+    <img src="/assets/blog/new-scenario.jpeg" alt="Creating a new beta version at a given point" />
+    <figcaption>Creating a new beta version at a given point</figcaption>
+  </figure>
+
+<p>That same approach would apply when several major features would be ready to integrate together in a more mature state, triggering a <strong>release candidate version</strong>. A manual merge would be executed from <code>beta</code> into <code>release</code>, producing a new release candidate version app.</p>
+
+<figure class="image">
+    <img src="/assets/blog/beta-release.gif" alt="Different beta versions, manual merge into a new release candidate" />
+    <figcaption>Different beta versions, manual merge into a new release candidate</figcaption>
+  </figure>
+
+<p><strong>This release candidate would the one potentially being shipped to iTunes Connect</strong>. In case the final testing and the review process would be satisfactory, the app would be published and a manual merge from release into <code>master</code> would be made, <strong>including a tag with the version number. The</strong> <code>master</code> <strong>branch would ideally contain all the app versions published in the AppStore, properly tagged.</strong></p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">git checkout master
+git tag v.1.2          <span class="c"># As an example</span>
+git push <span class="nt">--tags</span>
+    </code></pre></figure>
+
+<figure class="image">
+    <img src="/assets/blog/release-master.jpeg" alt="Merging into `master` once the app is published, using a tag (v.1.2)" />
+    <figcaption>Merging into `master` once the app is published, using a tag (v.1.2)</figcaption>
+  </figure>
+
+<p>All different versions produce two .ipa files, one targeting our staging backend and the second one targeting our live services.</p>
+
+<p>In order to make it easier for us (and for our testers) to tell which version targets what, we assigned different app icons including the version name and the backend environment:</p>
+
+<figure class="image">
+    <img src="/assets/blog/app-versions.jpeg" alt="" />
+    <figcaption></figcaption>
+  </figure>
+
+<p>These apps are uploaded to HockeyApp, where our team of testers can see and download them.
+And that’s our current setup. Thanks for reading! ✌️</p>
+
+:ET

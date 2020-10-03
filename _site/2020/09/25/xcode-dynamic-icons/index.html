@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Dynamic App icon generation with Xcode &middot; moraleda.info
+    
+  </title>
+
+  <link rel="stylesheet" href="http://localhost:4000/public/css/poole.css">
+  <link rel="stylesheet" href="http://localhost:4000/public/css/syntax.css">
+  <link rel="stylesheet" href="http://localhost:4000/public/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/public/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://localhost:4000/atom.xml">
+</head>
+
+  <!-- <body class="theme-base-09"> -->
+
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="/">
+          moraleda.info
+        </a>
+      </h1>
+      <p class="lead">Hi, I'm Guillermo: software developer and endurance sports <a href="https://www.strava.com/athletes/1661949" target="_blank"> enthusiast</a>.</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item" href="/">Home</a>
+
+      
+
+      
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/about/">About</a>
+          
+        
+      
+        
+      
+        
+          
+        
+      
+
+      <a class="sidebar-nav-item" href="https://github.com/gmoraleda">GitHub</a>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved.</p>
+  </div>
+</div>
+
+    <div class="content container">
+      <div class="post">
+  <h1 class="post-title">Dynamic App icon generation with Xcode</h1>
+  <span class="post-date">25 Sep 2020</span>
+  <p>When working in a corporate environment, you will easily find yourself building several variances of the same app, targeting different configurations (debug, beta, release), different environments (staging, production) and different versions.</p>
+
+<p>It can be messy if there is no clear way to differentiate them at a glance, i.e. with the app icon, and can potentially lead to situations where testers insert test data into production or try <em>to QA</em> a feature in the wrong app version.</p>
+
+<p>Our first approach at <a href="https://www.cluno.com/en/career/">Cluno</a> was to generate different icons for different versions and include all of them in the assets catalogue. This methods works straightforward but has two problems. First of all, it is not very flexible. The icons needs to be designed, attached to the project, and mapped to each configuration:</p>
+
+<figure class="image">
+    <img src="/assets/blog/configurations.png" alt="App Icons in Build Settings section" />
+    <figcaption>App Icons in Build Settings section</figcaption>
+  </figure>
+
+<p>You have to ship you app with more icons than it should, increasing as well the binary size.</p>
+
+<p>The second problem is that you lose the capability to include in the icons dynamic information such as version, build number, commit hash, etc.</p>
+
+<h2 id="generating-ios-app-icons-with-imagemagick">Generating iOS app icons with ImageMagick</h2>
+
+<p>There are several <a href="https://accounts.raywenderlich.com/v2/sso/login?sso=bm9uY2U9NmJiOThjNmJjZDM0MGM5ZWY1OTI4MzA0OTcyZmJhZGImY2FsbGJh%0AY2tfdXJsPWh0dHBzJTNBJTJGJTJGd3d3LnJheXdlbmRlcmxpY2guY29tJTJG%0Ac2Vzc2lvbnMlMkZjcmVhdGU%3D%0A&amp;sig=e60c2ec60c73daf0ca4ffe80cc01422de9f9ea9ecae9f2154909e7adb872b9b9&amp;mode=login">tutorials</a>, on how to <a href="http://merowing.info/2013/03/overlaying-application-version-on-top-of-your-icon/">generate the app icon</a> using <a href="https://imagemagick.org/index.php">ImageMagick</a>, running a script in a build phase and replacing it in the app package.</p>
+
+<blockquote>
+  <p><strong>As of iOS 11 that method doesn’t work anymore</strong>. Apparently Xcode creates a copy of the app icon in a separate private file and that’s the one being used.</p>
+</blockquote>
+
+<h3 id="a-new-approach">A new approach</h3>
+
+<p>Digging into Stackoverflow I found several people facing the same issue until <a href="https://stackoverflow.com/questions/46114034/ios11-appicon-cant-change/49528873#49528873">this answer</a> pointed us in the right direction: accessing directly the icon in the asset catalogue, performing the needed modifications before copying the bundle resources and reverting all the modifications at the very end, in order to leave the project in a clean state (with an unmodified app icon).</p>
+
+<h3 id="show-me-the-code">Show me the code!</h3>
+
+<p>In our project folder we created two scripts that are called during the build phases:</p>
+
+<h4 id="icon-generation-script">Icon generation script:</h4>
+
+<noscript><pre>400: Invalid request</pre></noscript>
+<script src="https://gist.github.com/af51e85ff5cac49b92d68c7705feac1d.js?file=IconVersioning.sh"> </script>
+
+<p>This script has to be called before the Copy Bundle Resources step. It can be pasted directly or called in the following way:</p>
+
+<p><code>"${SRCROOT}/Scripts/IconVersioning.sh"</code></p>
+
+<p>It embeds configuration, version and build number information to the icon. The band is tinted red in the case of production configurations, to make the tester aware of being in a production environment.</p>
+
+<p>The second script needs to be placed as last step during the build phases and is responsible for reverting the changes, checking out the unmodified version of the icon:</p>
+
+<h4 id="revert-script">Revert script:</h4>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="k">${</span><span class="nv">CONFIGURATION</span><span class="k">}</span><span class="s2">"</span> <span class="o">!=</span> <span class="s2">"ReleaseProduction"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
+</span><span class="nv">IFS</span><span class="o">=</span><span class="s1">$'</span><span class="se">\n</span><span class="s1">'</span>
+git checkout <span class="nt">--</span> <span class="sb">`</span>find <span class="s2">"</span><span class="k">${</span><span class="nv">SRCROOT</span><span class="k">}</span><span class="s2">/</span><span class="k">${</span><span class="nv">PRODUCT_NAME</span><span class="k">}</span><span class="s2">"</span> <span class="nt">-name</span> AppIcon.appiconset <span class="nt">-type</span> d<span class="sb">`</span>
+<span class="k">fi</span></code></pre></figure>
+
+<h3 id="-and-then-the-final-result-">… and then the final result 🎉</h3>
+
+<figure class="image">
+    <img src="/assets/blog/icons.png" alt="Final result" />
+    <figcaption>Final result</figcaption>
+  </figure>
+
+<p>Now is super convenient to work with different configurations, knowing that the icons are going to be up to date 😎.</p>
+
+<p>I set up a test project with the basic implementation: <a href="https://github.com/gmoraleda/Xcode-Dynamic-Icon-Generation">https://github.com/gmoraleda/Xcode-Dynamic-Icon-Generation</a></p>
+
+
+</div>
+
+
+<div class="related">
+  <h2>Related posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="http://localhost:4000/2020/09/30/branching-model/">
+            🌳 Branching Model for iOS development. Continuous Integration with Bitrise
+            <small>30 Sep 2020</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+    </div>
+
+  </body>
+</html>

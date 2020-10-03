@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>moraleda.info</title>
+ <link href="http://localhost:4000/atom.xml" rel="self"/>
+ <link href="http://localhost:4000/"/>
+ <updated>2020-10-03T22:06:34+02:00</updated>
+ <id>http://localhost:4000</id>
+ <author>
+   <name>Guillermo Moraleda</name>
+   <email></email>
+ </author>
+
+ 
+ <entry>
+   <title>🌳 Branching Model for iOS development. Continuous Integration with Bitrise</title>
+   <link href="http://localhost:4000/2020/09/30/branching-model/"/>
+   <updated>2020-09-30T00:00:00+02:00</updated>
+   <id>http://localhost:4000/2020/09/30/branching-model</id>
+   <content type="html">&lt;p&gt;When I started working at my current company, the setup we had for our iOS platform was hosted completely locally: &lt;strong&gt;Bitbucket Server&lt;/strong&gt; for the repo, &lt;strong&gt;Jenkins&lt;/strong&gt; as build platform and an own implementation of &lt;strong&gt;Hockeyapp&lt;/strong&gt; for the distribution (as far as I understood, from the old days when Hockeyapp was an open source project). All that was run by an external agency (the one who had developed our app).&lt;/p&gt;
+
+&lt;p&gt;One of the first tasks I was assigned to was the internalisation of such services in order to become independent and take control of the development cycle.&lt;/p&gt;
+
+&lt;p&gt;For hosting the repository we would use &lt;strong&gt;Bitbucket Cloud&lt;/strong&gt; and &lt;strong&gt;Hockeyapp&lt;/strong&gt; for distribution, but since our company does not host any server at all (our infrastructure runs mostly under the AWS umbrella), taking over the Jenkins implementation as it was, was not an option. &lt;strong&gt;I was in the market for a new cloud CI/CD platform.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://medium.com/xcblog/olympics-of-top-5-cloud-ios-continuous-integration-servers-fcaa6c79468d&quot;&gt;The Olympics of iOS cloud continuous integration servers&lt;/a&gt; was a great starting point. Since we are not developing an iOS only app, buddybuild was not considered. After some research, the two finalists were &lt;strong&gt;CircleCI&lt;/strong&gt; and &lt;strong&gt;Bitrise&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;initial-steps&quot;&gt;Initial Steps&lt;/h2&gt;
+
+&lt;p&gt;My initial choice was CircleCI but even I was following a couple of &lt;a href=&quot;https://medium.com/sixt-labs-techblog/continuous-integration-and-delivery-at-sixt-91ca215670a0&quot;&gt;tutorials&lt;/a&gt; I didn’t manage to get the signing working. It may offer more customisation than Bitrise but for &lt;strong&gt;someone who has no idea what’s he doing, having a building blocks interface as Bitrise does is key in such an early stage&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;The customer service responded promptly to my questions as well, yet another reason to move to Bitrise.&lt;/p&gt;
+
+&lt;figure class=&quot;image&quot;&gt;
+    &lt;img src=&quot;/assets/blog/bitrise.png&quot; alt=&quot;All the steps included in one of our workflows… pretty self-explanatory&quot; /&gt;
+    &lt;figcaption&gt;All the steps included in one of our workflows… pretty self-explanatory&lt;/figcaption&gt;
+  &lt;/figure&gt;
+
+&lt;p&gt;After linking all the steps (using basically the recommended templates from Bitrise) the building platform was working… sorta.&lt;/p&gt;
+
+&lt;h2 id=&quot;limitations&quot;&gt;Limitations&lt;/h2&gt;
+
+&lt;p&gt;We had three main workflows: Staging, Release Candidate and Distribution.&lt;/p&gt;
+
+&lt;p&gt;Staging and Release Candidate would build from our &lt;code&gt;develop&lt;/code&gt; branch while Distribution would build from &lt;code&gt;master&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;If you are a single developer this setup works ok… but as the team grows, so does the need for more flexibility.&lt;/p&gt;
+
+&lt;p&gt;What if I want to build a release candidate and someone else modifies the &lt;code&gt;develop&lt;/code&gt; branch? What if I want to ship a version to the QA department but I want to continue the development (and therefore merging branches into &lt;code&gt;develop&lt;/code&gt;)? &lt;strong&gt;Having a single branch in these scenarios is bad&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;new-branching-model-to-therescue&quot;&gt;New branching model to the rescue&lt;/h2&gt;
+
+&lt;p&gt;At that point it was quite clear that we were in need of more flexibility. We added two extra branches to our setup: &lt;code&gt;beta&lt;/code&gt; and &lt;code&gt;release&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;develop&lt;/code&gt; would continue to reflect the current development state, generating new &lt;strong&gt;alpha versions&lt;/strong&gt; every time a new branch would be merged into &lt;code&gt;develop&lt;/code&gt;. As soon as the product manager required a new version to test a bunch of tickets together, we would manually merge from &lt;code&gt;develop&lt;/code&gt; into beta, creating a new &lt;strong&gt;beta version&lt;/strong&gt; app.&lt;/p&gt;
+
+&lt;figure class=&quot;image&quot;&gt;
+    &lt;img src=&quot;/assets/blog/new-scenario.jpeg&quot; alt=&quot;Creating a new beta version at a given point&quot; /&gt;
+    &lt;figcaption&gt;Creating a new beta version at a given point&lt;/figcaption&gt;
+  &lt;/figure&gt;
+
+&lt;p&gt;That same approach would apply when several major features would be ready to integrate together in a more mature state, triggering a &lt;strong&gt;release candidate version&lt;/strong&gt;. A manual merge would be executed from &lt;code&gt;beta&lt;/code&gt; into &lt;code&gt;release&lt;/code&gt;, producing a new release candidate version app.&lt;/p&gt;
+
+&lt;figure class=&quot;image&quot;&gt;
+    &lt;img src=&quot;/assets/blog/beta-release.gif&quot; alt=&quot;Different beta versions, manual merge into a new release candidate&quot; /&gt;
+    &lt;figcaption&gt;Different beta versions, manual merge into a new release candidate&lt;/figcaption&gt;
+  &lt;/figure&gt;
+
+&lt;p&gt;&lt;strong&gt;This release candidate would the one potentially being shipped to iTunes Connect&lt;/strong&gt;. In case the final testing and the review process would be satisfactory, the app would be published and a manual merge from release into &lt;code&gt;master&lt;/code&gt; would be made, &lt;strong&gt;including a tag with the version number. The&lt;/strong&gt; &lt;code&gt;master&lt;/code&gt; &lt;strong&gt;branch would ideally contain all the app versions published in the AppStore, properly tagged.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git checkout master
+git tag v.1.2          &lt;span class=&quot;c&quot;&gt;# As an example&lt;/span&gt;
+git push &lt;span class=&quot;nt&quot;&gt;--tags&lt;/span&gt;
+    &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;image&quot;&gt;
+    &lt;img src=&quot;/assets/blog/release-master.jpeg&quot; alt=&quot;Merging into `master` once the app is published, using a tag (v.1.2)&quot; /&gt;
+    &lt;figcaption&gt;Merging into `master` once the app is published, using a tag (v.1.2)&lt;/figcaption&gt;
+  &lt;/figure&gt;
+
+&lt;p&gt;All different versions produce two .ipa files, one targeting our staging backend and the second one targeting our live services.&lt;/p&gt;
+
+&lt;p&gt;In order to make it easier for us (and for our testers) to tell which version targets what, we assigned different app icons including the version name and the backend environment:&lt;/p&gt;
+
+&lt;figure class=&quot;image&quot;&gt;
+    &lt;img src=&quot;/assets/blog/app-versions.jpeg&quot; alt=&quot;&quot; /&gt;
+    &lt;figcaption&gt;&lt;/figcaption&gt;
+  &lt;/figure&gt;
+
+&lt;p&gt;These apps are uploaded to HockeyApp, where our team of testers can see and download them.
+And that’s our current setup. Thanks for reading! ✌️&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Dynamic App icon generation with Xcode</title>
+   <link href="http://localhost:4000/2020/09/25/xcode-dynamic-icons/"/>
+   <updated>2020-09-25T00:00:00+02:00</updated>
+   <id>http://localhost:4000/2020/09/25/xcode-dynamic-icons</id>
+   <content type="html">&lt;p&gt;When working in a corporate environment, you will easily find yourself building several variances of the same app, targeting different configurations (debug, beta, release), different environments (staging, production) and different versions.&lt;/p&gt;
+
+&lt;p&gt;It can be messy if there is no clear way to differentiate them at a glance, i.e. with the app icon, and can potentially lead to situations where testers insert test data into production or try &lt;em&gt;to QA&lt;/em&gt; a feature in the wrong app version.&lt;/p&gt;
+
+&lt;p&gt;Our first approach at &lt;a href=&quot;https://www.cluno.com/en/career/&quot;&gt;Cluno&lt;/a&gt; was to generate different icons for different versions and include all of them in the assets catalogue. This methods works straightforward but has two problems. First of all, it is not very flexible. The icons needs to be designed, attached to the project, and mapped to each configuration:&lt;/p&gt;
+
+&lt;figure class=&quot;image&quot;&gt;
+    &lt;img src=&quot;/assets/blog/configurations.png&quot; alt=&quot;App Icons in Build Settings section&quot; /&gt;
+    &lt;figcaption&gt;App Icons in Build Settings section&lt;/figcaption&gt;
+  &lt;/figure&gt;
+
+&lt;p&gt;You have to ship you app with more icons than it should, increasing as well the binary size.&lt;/p&gt;
+
+&lt;p&gt;The second problem is that you lose the capability to include in the icons dynamic information such as version, build number, commit hash, etc.&lt;/p&gt;
+
+&lt;h2 id=&quot;generating-ios-app-icons-with-imagemagick&quot;&gt;Generating iOS app icons with ImageMagick&lt;/h2&gt;
+
+&lt;p&gt;There are several &lt;a href=&quot;https://accounts.raywenderlich.com/v2/sso/login?sso=bm9uY2U9NmJiOThjNmJjZDM0MGM5ZWY1OTI4MzA0OTcyZmJhZGImY2FsbGJh%0AY2tfdXJsPWh0dHBzJTNBJTJGJTJGd3d3LnJheXdlbmRlcmxpY2guY29tJTJG%0Ac2Vzc2lvbnMlMkZjcmVhdGU%3D%0A&amp;amp;sig=e60c2ec60c73daf0ca4ffe80cc01422de9f9ea9ecae9f2154909e7adb872b9b9&amp;amp;mode=login&quot;&gt;tutorials&lt;/a&gt;, on how to &lt;a href=&quot;http://merowing.info/2013/03/overlaying-application-version-on-top-of-your-icon/&quot;&gt;generate the app icon&lt;/a&gt; using &lt;a href=&quot;https://imagemagick.org/index.php&quot;&gt;ImageMagick&lt;/a&gt;, running a script in a build phase and replacing it in the app package.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;As of iOS 11 that method doesn’t work anymore&lt;/strong&gt;. Apparently Xcode creates a copy of the app icon in a separate private file and that’s the one being used.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;a-new-approach&quot;&gt;A new approach&lt;/h3&gt;
+
+&lt;p&gt;Digging into Stackoverflow I found several people facing the same issue until &lt;a href=&quot;https://stackoverflow.com/questions/46114034/ios11-appicon-cant-change/49528873#49528873&quot;&gt;this answer&lt;/a&gt; pointed us in the right direction: accessing directly the icon in the asset catalogue, performing the needed modifications before copying the bundle resources and reverting all the modifications at the very end, in order to leave the project in a clean state (with an unmodified app icon).&lt;/p&gt;
+
+&lt;h3 id=&quot;show-me-the-code&quot;&gt;Show me the code!&lt;/h3&gt;
+
+&lt;p&gt;In our project folder we created two scripts that are called during the build phases:&lt;/p&gt;
+
+&lt;h4 id=&quot;icon-generation-script&quot;&gt;Icon generation script:&lt;/h4&gt;
+
+&lt;noscript&gt;&lt;pre&gt;400: Invalid request&lt;/pre&gt;&lt;/noscript&gt;
+&lt;script src=&quot;https://gist.github.com/af51e85ff5cac49b92d68c7705feac1d.js?file=IconVersioning.sh&quot;&gt; &lt;/script&gt;
+
+&lt;p&gt;This script has to be called before the Copy Bundle Resources step. It can be pasted directly or called in the following way:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;&quot;${SRCROOT}/Scripts/IconVersioning.sh&quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;It embeds configuration, version and build number information to the icon. The band is tinted red in the case of production configurations, to make the tester aware of being in a production environment.&lt;/p&gt;
+
+&lt;p&gt;The second script needs to be placed as last step during the build phases and is responsible for reverting the changes, checking out the unmodified version of the icon:&lt;/p&gt;
+
+&lt;h4 id=&quot;revert-script&quot;&gt;Revert script:&lt;/h4&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;CONFIGURATION&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;ReleaseProduction&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;IFS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;$'&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'&lt;/span&gt;
+git checkout &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;find &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;SRCROOT&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PRODUCT_NAME&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-name&lt;/span&gt; AppIcon.appiconset &lt;span class=&quot;nt&quot;&gt;-type&lt;/span&gt; d&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;-and-then-the-final-result-&quot;&gt;… and then the final result 🎉&lt;/h3&gt;
+
+&lt;figure class=&quot;image&quot;&gt;
+    &lt;img src=&quot;/assets/blog/icons.png&quot; alt=&quot;Final result&quot; /&gt;
+    &lt;figcaption&gt;Final result&lt;/figcaption&gt;
+  &lt;/figure&gt;
+
+&lt;p&gt;Now is super convenient to work with different configurations, knowing that the icons are going to be up to date 😎.&lt;/p&gt;
+
+&lt;p&gt;I set up a test project with the basic implementation: &lt;a href=&quot;https://github.com/gmoraleda/Xcode-Dynamic-Icon-Generation&quot;&gt;https://github.com/gmoraleda/Xcode-Dynamic-Icon-Generation&lt;/a&gt;&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+
+</feed>
