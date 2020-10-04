@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
  <title>moraleda.info</title>
- <link href="http://localhost:4000/atom.xml" rel="self"/>
- <link href="http://localhost:4000/"/>
- <updated>2020-10-03T23:22:13+02:00</updated>
- <id>http://localhost:4000</id>
+ <link href="http://moraleda.info/atom.xml" rel="self"/>
+ <link href="http://moraleda.info/"/>
+ <updated>2020-10-04T08:46:43+02:00</updated>
+ <id>http://moraleda.info</id>
  <author>
    <name>Guillermo Moraleda</name>
    <email></email>
@@ -14,9 +14,9 @@
  
  <entry>
    <title>🌳 Branching Model for iOS development. Continuous Integration with Bitrise</title>
-   <link href="http://localhost:4000/2020/09/30/branching-model/"/>
+   <link href="http://moraleda.info/2020/09/30/branching-model/"/>
    <updated>2020-09-30T00:00:00+02:00</updated>
-   <id>http://localhost:4000/2020/09/30/branching-model</id>
+   <id>http://moraleda.info/2020/09/30/branching-model</id>
    <content type="html">&lt;p&gt;When I started working at my current company, the setup we had for our iOS platform was hosted completely locally: &lt;strong&gt;Bitbucket Server&lt;/strong&gt; for the repo, &lt;strong&gt;Jenkins&lt;/strong&gt; as build platform and an own implementation of &lt;strong&gt;Hockeyapp&lt;/strong&gt; for the distribution (as far as I understood, from the old days when Hockeyapp was an open source project). All that was run by an external agency (the one who had developed our app).&lt;/p&gt;
 
 &lt;p&gt;One of the first tasks I was assigned to was the internalisation of such services in order to become independent and take control of the development cycle.&lt;/p&gt;
@@ -95,9 +95,9 @@ And that’s our current setup. Thanks for reading! ✌️&lt;/p&gt;
  
  <entry>
    <title>Dynamic App icon generation with Xcode</title>
-   <link href="http://localhost:4000/2020/09/25/xcode-dynamic-icons/"/>
+   <link href="http://moraleda.info/2020/09/25/xcode-dynamic-icons/"/>
    <updated>2020-09-25T00:00:00+02:00</updated>
-   <id>http://localhost:4000/2020/09/25/xcode-dynamic-icons</id>
+   <id>http://moraleda.info/2020/09/25/xcode-dynamic-icons</id>
    <content type="html">&lt;p&gt;When working in a corporate environment, you will easily find yourself building several variances of the same app, targeting different configurations (debug, beta, release), different environments (staging, production) and different versions.&lt;/p&gt;
 
 &lt;p&gt;It can be messy if there is no clear way to differentiate them at a glance, i.e. with the app icon, and can potentially lead to situations where testers insert test data into production or try &lt;em&gt;to QA&lt;/em&gt; a feature in the wrong app version.&lt;/p&gt;
