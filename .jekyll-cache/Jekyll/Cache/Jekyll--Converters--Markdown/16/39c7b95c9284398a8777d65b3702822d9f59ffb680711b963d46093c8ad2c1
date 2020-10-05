@@ -1,4 +1,4 @@
-I"Ç<p>When working in a corporate environment, you will easily find yourself building several variances of the same app, targeting different configurations (debug, beta, release), different environments (staging, production) and different versions.</p>
+I"ô<p>When working in a corporate environment, you will easily find yourself building several variances of the same app, targeting different configurations (debug, beta, release), different environments (staging, production) and different versions.</p>
 
 <p>It can be messy if there is no clear way to differentiate them at a glance, i.e. with the app icon, and can potentially lead to situations where testers insert test data into production or try <em>to QA</em> a feature in the wrong app version.</p>
 
@@ -36,7 +36,7 @@
 
 <p>This script has to be called before the Copy Bundle Resources step. It can be pasted directly or called in the following way:</p>
 
-<p><code>"${SRCROOT}/Scripts/IconVersioning.sh"</code></p>
+<p><code class="language-plaintext highlighter-rouge">"${SRCROOT}/Scripts/IconVersioning.sh"</code></p>
 
 <p>It embeds configuration, version and build number information to the icon. The band is tinted red in the case of production configurations, to make the tester aware of being in a production environment.</p>
 

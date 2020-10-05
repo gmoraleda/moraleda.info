@@ -12,15 +12,15 @@
     
   </title>
 
-  <link rel="stylesheet" href="http://moraleda.info/assets/css/poole.css">
-  <link rel="stylesheet" href="http://moraleda.info/assets/css/syntax.css">
-  <link rel="stylesheet" href="http://moraleda.info/assets/css/hyde.css">
+  <link rel="stylesheet" href="http://localhost:4000/assets/css/poole.css">
+  <link rel="stylesheet" href="http://localhost:4000/assets/css/syntax.css">
+  <link rel="stylesheet" href="http://localhost:4000/assets/css/hyde.css">
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
 
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://moraleda.info/public/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="http://moraleda.info/favicon.png">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/public/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
 
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://moraleda.info/atom.xml">
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://localhost:4000/atom.xml">
 </head>
 
   <!-- <body class="theme-base-09"> -->
@@ -49,7 +49,7 @@
       
         
           
-            <a class="sidebar-nav-item" href="http://moraleda.info/about/">About</a>
+            <a class="sidebar-nav-item" href="http://localhost:4000/about/">About</a>
           
         
       
@@ -96,31 +96,31 @@
 
 <p>We had three main workflows: Staging, Release Candidate and Distribution.</p>
 
-<p>Staging and Release Candidate would build from our <code>develop</code> branch while Distribution would build from <code>master</code>.</p>
+<p>Staging and Release Candidate would build from our <code class="language-plaintext highlighter-rouge">develop</code> branch while Distribution would build from <code class="language-plaintext highlighter-rouge">master</code>.</p>
 
 <p>If you are a single developer this setup works ok… but as the team grows, so does the need for more flexibility.</p>
 
-<p>What if I want to build a release candidate and someone else modifies the <code>develop</code> branch? What if I want to ship a version to the QA department but I want to continue the development (and therefore merging branches into <code>develop</code>)? <strong>Having a single branch in these scenarios is bad</strong>.</p>
+<p>What if I want to build a release candidate and someone else modifies the <code class="language-plaintext highlighter-rouge">develop</code> branch? What if I want to ship a version to the QA department but I want to continue the development (and therefore merging branches into <code class="language-plaintext highlighter-rouge">develop</code>)? <strong>Having a single branch in these scenarios is bad</strong>.</p>
 
 <h2 id="new-branching-model-to-therescue">New branching model to the rescue</h2>
 
-<p>At that point it was quite clear that we were in need of more flexibility. We added two extra branches to our setup: <code>beta</code> and <code>release</code>.</p>
+<p>At that point it was quite clear that we were in need of more flexibility. We added two extra branches to our setup: <code class="language-plaintext highlighter-rouge">beta</code> and <code class="language-plaintext highlighter-rouge">release</code>.</p>
 
-<p><code>develop</code> would continue to reflect the current development state, generating new <strong>alpha versions</strong> every time a new branch would be merged into <code>develop</code>. As soon as the product manager required a new version to test a bunch of tickets together, we would manually merge from <code>develop</code> into beta, creating a new <strong>beta version</strong> app.</p>
+<p><code class="language-plaintext highlighter-rouge">develop</code> would continue to reflect the current development state, generating new <strong>alpha versions</strong> every time a new branch would be merged into <code class="language-plaintext highlighter-rouge">develop</code>. As soon as the product manager required a new version to test a bunch of tickets together, we would manually merge from <code class="language-plaintext highlighter-rouge">develop</code> into beta, creating a new <strong>beta version</strong> app.</p>
 
 <figure class="image">
     <img src="/assets/blog/new-scenario.jpeg" alt="Creating a new beta version at a given point" />
     <figcaption>Creating a new beta version at a given point</figcaption>
   </figure>
 
-<p>That same approach would apply when several major features would be ready to integrate together in a more mature state, triggering a <strong>release candidate version</strong>. A manual merge would be executed from <code>beta</code> into <code>release</code>, producing a new release candidate version app.</p>
+<p>That same approach would apply when several major features would be ready to integrate together in a more mature state, triggering a <strong>release candidate version</strong>. A manual merge would be executed from <code class="language-plaintext highlighter-rouge">beta</code> into <code class="language-plaintext highlighter-rouge">release</code>, producing a new release candidate version app.</p>
 
 <figure class="image">
     <img src="/assets/blog/beta-release.gif" alt="Different beta versions, manual merge into a new release candidate" />
     <figcaption>Different beta versions, manual merge into a new release candidate</figcaption>
   </figure>
 
-<p><strong>This release candidate would the one potentially being shipped to iTunes Connect</strong>. In case the final testing and the review process would be satisfactory, the app would be published and a manual merge from release into <code>master</code> would be made, <strong>including a tag with the version number. The</strong> <code>master</code> <strong>branch would ideally contain all the app versions published in the AppStore, properly tagged.</strong></p>
+<p><strong>This release candidate would the one potentially being shipped to iTunes Connect</strong>. In case the final testing and the review process would be satisfactory, the app would be published and a manual merge from release into <code class="language-plaintext highlighter-rouge">master</code> would be made, <strong>including a tag with the version number. The</strong> <code class="language-plaintext highlighter-rouge">master</code> <strong>branch would ideally contain all the app versions published in the AppStore, properly tagged.</strong></p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">git checkout master
 git tag v.1.2          <span class="c"># As an example</span>
@@ -154,7 +154,7 @@ And that’s our current setup. Thanks for reading! ✌️</p>
     
       <li>
         <h3>
-          <a href="http://moraleda.info/2020/09/25/xcode-dynamic-icons/">
+          <a href="http://localhost:4000/2020/09/25/xcode-dynamic-icons/">
             Dynamic App icon generation with Xcode
             <small>25 Sep 2020</small>
           </a>

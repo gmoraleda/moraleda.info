@@ -3,5 +3,5 @@ source 'https://rubygems.org'
 gem "jekyll"  
 gem "jekyll-paginate"
 gem "jekyll-gist"
+gem "rouge"
 gem "redcarpet"
-gem 'pygments.rb', '~> 0.6.3'

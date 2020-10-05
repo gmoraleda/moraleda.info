@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
  <title>moraleda.info</title>
- <link href="http://moraleda.info/atom.xml" rel="self"/>
- <link href="http://moraleda.info/"/>
- <updated>2020-10-04T08:46:43+02:00</updated>
- <id>http://moraleda.info</id>
+ <link href="http://localhost:4000/atom.xml" rel="self"/>
+ <link href="http://localhost:4000/"/>
+ <updated>2020-10-05T09:10:52+02:00</updated>
+ <id>http://localhost:4000</id>
  <author>
    <name>Guillermo Moraleda</name>
    <email></email>
@@ -14,9 +14,9 @@
  
  <entry>
    <title>🌳 Branching Model for iOS development. Continuous Integration with Bitrise</title>
-   <link href="http://moraleda.info/2020/09/30/branching-model/"/>
+   <link href="http://localhost:4000/2020/09/30/branching-model/"/>
    <updated>2020-09-30T00:00:00+02:00</updated>
-   <id>http://moraleda.info/2020/09/30/branching-model</id>
+   <id>http://localhost:4000/2020/09/30/branching-model</id>
    <content type="html">&lt;p&gt;When I started working at my current company, the setup we had for our iOS platform was hosted completely locally: &lt;strong&gt;Bitbucket Server&lt;/strong&gt; for the repo, &lt;strong&gt;Jenkins&lt;/strong&gt; as build platform and an own implementation of &lt;strong&gt;Hockeyapp&lt;/strong&gt; for the distribution (as far as I understood, from the old days when Hockeyapp was an open source project). All that was run by an external agency (the one who had developed our app).&lt;/p&gt;
 
 &lt;p&gt;One of the first tasks I was assigned to was the internalisation of such services in order to become independent and take control of the development cycle.&lt;/p&gt;
@@ -42,31 +42,31 @@
 
 &lt;p&gt;We had three main workflows: Staging, Release Candidate and Distribution.&lt;/p&gt;
 
-&lt;p&gt;Staging and Release Candidate would build from our &lt;code&gt;develop&lt;/code&gt; branch while Distribution would build from &lt;code&gt;master&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Staging and Release Candidate would build from our &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;develop&lt;/code&gt; branch while Distribution would build from &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;master&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;If you are a single developer this setup works ok… but as the team grows, so does the need for more flexibility.&lt;/p&gt;
 
-&lt;p&gt;What if I want to build a release candidate and someone else modifies the &lt;code&gt;develop&lt;/code&gt; branch? What if I want to ship a version to the QA department but I want to continue the development (and therefore merging branches into &lt;code&gt;develop&lt;/code&gt;)? &lt;strong&gt;Having a single branch in these scenarios is bad&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;What if I want to build a release candidate and someone else modifies the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;develop&lt;/code&gt; branch? What if I want to ship a version to the QA department but I want to continue the development (and therefore merging branches into &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;develop&lt;/code&gt;)? &lt;strong&gt;Having a single branch in these scenarios is bad&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;new-branching-model-to-therescue&quot;&gt;New branching model to the rescue&lt;/h2&gt;
 
-&lt;p&gt;At that point it was quite clear that we were in need of more flexibility. We added two extra branches to our setup: &lt;code&gt;beta&lt;/code&gt; and &lt;code&gt;release&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;At that point it was quite clear that we were in need of more flexibility. We added two extra branches to our setup: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;beta&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;release&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;develop&lt;/code&gt; would continue to reflect the current development state, generating new &lt;strong&gt;alpha versions&lt;/strong&gt; every time a new branch would be merged into &lt;code&gt;develop&lt;/code&gt;. As soon as the product manager required a new version to test a bunch of tickets together, we would manually merge from &lt;code&gt;develop&lt;/code&gt; into beta, creating a new &lt;strong&gt;beta version&lt;/strong&gt; app.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;develop&lt;/code&gt; would continue to reflect the current development state, generating new &lt;strong&gt;alpha versions&lt;/strong&gt; every time a new branch would be merged into &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;develop&lt;/code&gt;. As soon as the product manager required a new version to test a bunch of tickets together, we would manually merge from &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;develop&lt;/code&gt; into beta, creating a new &lt;strong&gt;beta version&lt;/strong&gt; app.&lt;/p&gt;
 
 &lt;figure class=&quot;image&quot;&gt;
     &lt;img src=&quot;/assets/blog/new-scenario.jpeg&quot; alt=&quot;Creating a new beta version at a given point&quot; /&gt;
     &lt;figcaption&gt;Creating a new beta version at a given point&lt;/figcaption&gt;
   &lt;/figure&gt;
 
-&lt;p&gt;That same approach would apply when several major features would be ready to integrate together in a more mature state, triggering a &lt;strong&gt;release candidate version&lt;/strong&gt;. A manual merge would be executed from &lt;code&gt;beta&lt;/code&gt; into &lt;code&gt;release&lt;/code&gt;, producing a new release candidate version app.&lt;/p&gt;
+&lt;p&gt;That same approach would apply when several major features would be ready to integrate together in a more mature state, triggering a &lt;strong&gt;release candidate version&lt;/strong&gt;. A manual merge would be executed from &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;beta&lt;/code&gt; into &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;release&lt;/code&gt;, producing a new release candidate version app.&lt;/p&gt;
 
 &lt;figure class=&quot;image&quot;&gt;
     &lt;img src=&quot;/assets/blog/beta-release.gif&quot; alt=&quot;Different beta versions, manual merge into a new release candidate&quot; /&gt;
     &lt;figcaption&gt;Different beta versions, manual merge into a new release candidate&lt;/figcaption&gt;
   &lt;/figure&gt;
 
-&lt;p&gt;&lt;strong&gt;This release candidate would the one potentially being shipped to iTunes Connect&lt;/strong&gt;. In case the final testing and the review process would be satisfactory, the app would be published and a manual merge from release into &lt;code&gt;master&lt;/code&gt; would be made, &lt;strong&gt;including a tag with the version number. The&lt;/strong&gt; &lt;code&gt;master&lt;/code&gt; &lt;strong&gt;branch would ideally contain all the app versions published in the AppStore, properly tagged.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;This release candidate would the one potentially being shipped to iTunes Connect&lt;/strong&gt;. In case the final testing and the review process would be satisfactory, the app would be published and a manual merge from release into &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;master&lt;/code&gt; would be made, &lt;strong&gt;including a tag with the version number. The&lt;/strong&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;master&lt;/code&gt; &lt;strong&gt;branch would ideally contain all the app versions published in the AppStore, properly tagged.&lt;/strong&gt;&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git checkout master
 git tag v.1.2          &lt;span class=&quot;c&quot;&gt;# As an example&lt;/span&gt;
@@ -95,9 +95,9 @@ And that’s our current setup. Thanks for reading! ✌️&lt;/p&gt;
  
  <entry>
    <title>Dynamic App icon generation with Xcode</title>
-   <link href="http://moraleda.info/2020/09/25/xcode-dynamic-icons/"/>
+   <link href="http://localhost:4000/2020/09/25/xcode-dynamic-icons/"/>
    <updated>2020-09-25T00:00:00+02:00</updated>
-   <id>http://moraleda.info/2020/09/25/xcode-dynamic-icons</id>
+   <id>http://localhost:4000/2020/09/25/xcode-dynamic-icons</id>
    <content type="html">&lt;p&gt;When working in a corporate environment, you will easily find yourself building several variances of the same app, targeting different configurations (debug, beta, release), different environments (staging, production) and different versions.&lt;/p&gt;
 
 &lt;p&gt;It can be messy if there is no clear way to differentiate them at a glance, i.e. with the app icon, and can potentially lead to situations where testers insert test data into production or try &lt;em&gt;to QA&lt;/em&gt; a feature in the wrong app version.&lt;/p&gt;
@@ -136,7 +136,7 @@ And that’s our current setup. Thanks for reading! ✌️&lt;/p&gt;
 
 &lt;p&gt;This script has to be called before the Copy Bundle Resources step. It can be pasted directly or called in the following way:&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;&quot;${SRCROOT}/Scripts/IconVersioning.sh&quot;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&quot;${SRCROOT}/Scripts/IconVersioning.sh&quot;&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;It embeds configuration, version and build number information to the icon. The band is tinted red in the case of production configurations, to make the tester aware of being in a production environment.&lt;/p&gt;
 
