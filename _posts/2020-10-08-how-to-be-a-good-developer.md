@@ -28,7 +28,7 @@ We often whine about legacy code. Well, that last pull request that you just mer
 
 ## Say no
 Push back. Say no. Don't be shy. 
-Is this new feature compliance with the rest of the app? Are the designs consistent? Can we use a native feature that will save us time compared to building everything ourselves?
+Is this new feature compliant with the rest of the app? Are the designs consistent? Can we use a native feature that will save us time compared to building everything ourselves?
 
 Your work will be product driven. And hopefully your product managers will know what are they doing. But that won't always be the case. It is your job to guide them whenever is required. To know and defend your platform. To say no whenever you think you should. 
 
