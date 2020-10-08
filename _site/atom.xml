@@ -4,7 +4,7 @@
  <title>moraleda.info</title>
  <link href="http://moraleda.info/atom.xml" rel="self"/>
  <link href="http://moraleda.info/"/>
- <updated>2020-10-08T14:53:40+02:00</updated>
+ <updated>2020-10-08T14:54:26+02:00</updated>
  <id>http://moraleda.info</id>
  <author>
    <name>Guillermo Moraleda</name>
@@ -14,9 +14,9 @@
  
  <entry>
    <title>How to be a good developer</title>
-   <link href="http://moraleda.info/2020/10/08/good-dev/"/>
+   <link href="http://moraleda.info/2020/10/08/how-to-be-a-good-developer/"/>
    <updated>2020-10-08T00:00:00+02:00</updated>
-   <id>http://moraleda.info/2020/10/08/good-dev</id>
+   <id>http://moraleda.info/2020/10/08/how-to-be-a-good-developer</id>
    <content type="html">&lt;p&gt;You have decided that you want to become a developer. Good. There is a huge demand and salaries are high. But what does it take to succeed at this job?&lt;/p&gt;
 
 &lt;h2 id=&quot;forget-about-coding-skills&quot;&gt;Forget about coding skills&lt;/h2&gt;
