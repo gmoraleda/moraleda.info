@@ -11,7 +11,7 @@ Yet there is one last screen my daughter is enjoying: my Apple Watch.
 
 I don't want to remove it every time I go on my knees and start playing with her, but the moment that the watch detects a wrist movement and activates, Lola goes to it like bees to honey.
 
-I'm amazed by how fast she got the swiping gesture. She swipes throw menus with her tiny fingers, messing with various apps... it is fun but I'm also a bit concern that she is going to delete some important appointment or challenge my colleagues in the Workouts app. Don't want them to be embarrassed 😜
+I'm amazed by how fast she got the swiping gesture. She swipes through the menus with her tiny fingers, messing with various apps... it is fun but I'm also a bit concern that she is going to delete some important appointment or challenge my colleagues in the Workouts app. Don't want them to be embarrassed 😜
 
 ## The solution
 
