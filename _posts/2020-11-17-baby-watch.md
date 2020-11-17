@@ -19,7 +19,7 @@ I thought about creating a playground for her. An App on itself where she could 
 
 ## The implementation
 
-I have zero experience with watchOS. The app I wanted to build would be some sort of TableView where each cell would have a background color and some emojis perhaps. Emojis are fun. I can do this fairly quick with UIKit. What about the Apple Watch?
+I have zero experience with watchOS. The app I wanted to build would be some sort of TableView where each cell would have a background color and some emojis perhaps. Emojis are fun. I can do this fairly quickly with UIKit. What about the Apple Watch?
 
 Well, now you can build a standalone watchOS App using SwitfUI even faster. The App is 50 lines of code. Yes. Fifty. And is ridiculously easy to follow:
 
