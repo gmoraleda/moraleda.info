@@ -84,4 +84,4 @@ The button action toggles the `isEmojiVisible` variable and reloads the ViewMode
 
 I tested it with Lola and she seems to love it. And I loved how easy is to create something from scratch using SwiftUI.
 
-I publish the project on [GitHub](https://github.com/gmoraleda/BabyColors) for those who might be interested. Thanks for reading! ✌️
+I've published the project on [GitHub](https://github.com/gmoraleda/BabyColors) for those who might be interested. Thanks for reading! ✌️
