@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
  <title>moraleda.info</title>
- <link href="http://localhost:4000/atom.xml" rel="self"/>
- <link href="http://localhost:4000/"/>
- <updated>2020-11-17T17:29:42+01:00</updated>
- <id>http://localhost:4000</id>
+ <link href="http://moraleda.info/atom.xml" rel="self"/>
+ <link href="http://moraleda.info/"/>
+ <updated>2020-11-17T17:30:39+01:00</updated>
+ <id>http://moraleda.info</id>
  <author>
    <name>Guillermo Moraleda</name>
    <email></email>
@@ -14,9 +14,9 @@
  
  <entry>
    <title>SwiftUI in the Apple Watch - Baby Colors</title>
-   <link href="http://localhost:4000/2020/11/17/baby-watch/"/>
+   <link href="http://moraleda.info/2020/11/17/baby-watch/"/>
    <updated>2020-11-17T00:00:00+01:00</updated>
-   <id>http://localhost:4000/2020/11/17/baby-watch</id>
+   <id>http://moraleda.info/2020/11/17/baby-watch</id>
    <content type="html">&lt;p&gt;My daughter Lola, as any other toddler I suppose, loves screens. She gets hypnotized by any square that throws light.
 My wife and I have been pretty consequent about her exposure to screens: we don’t watch TV if she is around, we limit our own screen time, etc.
 Yet there is one last screen my daughter is enjoying: my Apple Watch.&lt;/p&gt;
@@ -101,9 +101,9 @@ Yet there is one last screen my daughter is enjoying: my Apple Watch.&lt;/p&gt;
  
  <entry>
    <title>How to be a good developer</title>
-   <link href="http://localhost:4000/2020/10/08/how-to-be-a-good-developer/"/>
+   <link href="http://moraleda.info/2020/10/08/how-to-be-a-good-developer/"/>
    <updated>2020-10-08T00:00:00+02:00</updated>
-   <id>http://localhost:4000/2020/10/08/how-to-be-a-good-developer</id>
+   <id>http://moraleda.info/2020/10/08/how-to-be-a-good-developer</id>
    <content type="html">&lt;p&gt;You have decided that you want to become a developer. Good. There is a huge demand and salaries are high. But what does it take to succeed at this job?&lt;/p&gt;
 
 &lt;h2 id=&quot;forget-about-coding-skills&quot;&gt;Forget about coding skills&lt;/h2&gt;
@@ -150,9 +150,9 @@ Is this new feature compliant with the rest of the app? Are the designs consiste
  
  <entry>
    <title>🌳 Branching Model for iOS development. Continuous Integration with Bitrise</title>
-   <link href="http://localhost:4000/2020/09/30/branching-model/"/>
+   <link href="http://moraleda.info/2020/09/30/branching-model/"/>
    <updated>2020-09-30T00:00:00+02:00</updated>
-   <id>http://localhost:4000/2020/09/30/branching-model</id>
+   <id>http://moraleda.info/2020/09/30/branching-model</id>
    <content type="html">&lt;p&gt;When I started working at my current company, the setup we had for our iOS platform was hosted completely locally: &lt;strong&gt;Bitbucket Server&lt;/strong&gt; for the repo, &lt;strong&gt;Jenkins&lt;/strong&gt; as build platform and an own implementation of &lt;strong&gt;Hockeyapp&lt;/strong&gt; for the distribution (as far as I understood, from the old days when Hockeyapp was an open source project). All that was run by an external agency (the one who had developed our app).&lt;/p&gt;
 
 &lt;p&gt;One of the first tasks I was assigned to was the internalisation of such services in order to become independent and take control of the development cycle.&lt;/p&gt;
@@ -231,9 +231,9 @@ And that’s our current setup. Thanks for reading! ✌️&lt;/p&gt;
  
  <entry>
    <title>Dynamic App icon generation with Xcode</title>
-   <link href="http://localhost:4000/2020/09/25/xcode-dynamic-icons/"/>
+   <link href="http://moraleda.info/2020/09/25/xcode-dynamic-icons/"/>
    <updated>2020-09-25T00:00:00+02:00</updated>
-   <id>http://localhost:4000/2020/09/25/xcode-dynamic-icons</id>
+   <id>http://moraleda.info/2020/09/25/xcode-dynamic-icons</id>
    <content type="html">&lt;p&gt;When working in a corporate environment, you will easily find yourself building several variances of the same app, targeting different configurations (debug, beta, release), different environments (staging, production) and different versions.&lt;/p&gt;
 
 &lt;p&gt;It can be messy if there is no clear way to differentiate them at a glance, i.e. with the app icon, and can potentially lead to situations where testers insert test data into production or try &lt;em&gt;to QA&lt;/em&gt; a feature in the wrong app version.&lt;/p&gt;
