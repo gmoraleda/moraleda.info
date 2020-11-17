@@ -4,7 +4,7 @@
  <title>moraleda.info</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2020-11-03T15:11:30+01:00</updated>
+ <updated>2020-11-17T17:29:42+01:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Guillermo Moraleda</name>
@@ -13,16 +13,89 @@
 
  
  <entry>
-   <title>Saving Zelda again and again</title>
-   <link href="http://localhost:4000/2020/11/03/saving-zelda/"/>
-   <updated>2020-11-03T00:00:00+01:00</updated>
-   <id>http://localhost:4000/2020/11/03/saving-zelda</id>
-   <content type="html">&lt;p&gt;I’ve never been a &lt;em&gt;gamer&lt;/em&gt;. When I was a child I had a SEGA Master System II and later a SEGA Mega Drive. These where presents from my uncles. My parents kind of allowed it but never encouraged that hobby. Meaning I didn’t get any games but the ones that came with the console itself.&lt;/p&gt;
+   <title>SwiftUI in the Apple Watch - Baby Colors</title>
+   <link href="http://localhost:4000/2020/11/17/baby-watch/"/>
+   <updated>2020-11-17T00:00:00+01:00</updated>
+   <id>http://localhost:4000/2020/11/17/baby-watch</id>
+   <content type="html">&lt;p&gt;My daughter Lola, as any other toddler I suppose, loves screens. She gets hypnotized by any square that throws light.
+My wife and I have been pretty consequent about her exposure to screens: we don’t watch TV if she is around, we limit our own screen time, etc.
+Yet there is one last screen my daughter is enjoying: my Apple Watch.&lt;/p&gt;
 
-&lt;p&gt;At some point the handheld consoles were a thing and I remember visiting a Cash Converter shop and selling my Mega Drive with a couple of controllers and two or three games so that I could buy a Nintendo Game Boy - classic, of course - with the game &lt;strong&gt;The legend of Zelda: Link’s awakening&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;the-problem&quot;&gt;The problem&lt;/h2&gt;
 
-&lt;p&gt;And what a disappointment it was. I wasn’t able to understand any English so I remember playing till the first dungeon and then getting lost. There was a saved game on that cartridge where Link had most of the weapons. I remember treasuring that saved game and playing it for fun. Still no clue of what was going on in the game. Yet somehow the &lt;a href=&quot;https://www.youtube.com/watch?v=ULyEY_GjSoA&quot; target=&quot;_blank&quot;&gt;soundtrack&lt;/a&gt; got hot stamped into my brain.&lt;/p&gt;
+&lt;p&gt;I don’t want to remove it every time I go on my knees and start playing with her, but the moment that the watch detects a wrist movement and activates, Lola goes to it like bees to honey.&lt;/p&gt;
 
+&lt;p&gt;I’m amazed by how fast she got the swiping gesture. She swipes throw menus with her tiny fingers, messing with various apps… it is fun but I’m also a bit concern that she is going to delete some important appointment or challenge my colleagues in the Workouts app. Don’t want them to be embarrassed 😜&lt;/p&gt;
+
+&lt;h2 id=&quot;the-solution&quot;&gt;The solution&lt;/h2&gt;
+
+&lt;p&gt;I thought about creating a playground for her. An App on itself where she could swipe. It’s coding time!&lt;/p&gt;
+
+&lt;h2 id=&quot;the-implementation&quot;&gt;The implementation&lt;/h2&gt;
+
+&lt;p&gt;I have zero experience with watchOS. The app I wanted to build would be some sort of TableView where each cell would have a background color and some emojis perhaps. Emojis are fun. I can do this fairly quick with UIKit. What about the Apple Watch?&lt;/p&gt;
+
+&lt;p&gt;Well, now you can build a standalone watchOS App using SwitfUI even faster. The App is 50 lines of code. Yes. Fifty. And is ridiculously easy to follow:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&lt;span class=&quot;kd&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;ViewItem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Identifiable&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;UUID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;color&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;ListViewModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;ObservableObject&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;@Published&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;items&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;ViewItem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]()&lt;/span&gt;
+
+    &lt;span class=&quot;nf&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nf&quot;&gt;reload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;reload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;intArray&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;repeating&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;items&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;intArray&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;map&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;ViewItem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;We have a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ViewItem&lt;/code&gt; which represent every cell in the TableView (a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;List&lt;/code&gt; in the SwifUI world). It needs to conform to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Identifiable&lt;/code&gt; and it basically holds one color. Just a random generated one.&lt;/p&gt;
+
+&lt;p&gt;Then we have a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ListViewModel&lt;/code&gt; which holds an array of items. I created the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;reload&lt;/code&gt; function so that the array would be regenerated when any cell is touched.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&lt;span class=&quot;kd&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;ContentView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;View&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;cellHeight&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;WKInterfaceDevice&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;current&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;screenBounds&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;height&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+    
+    &lt;span class=&quot;kd&quot;&gt;@State&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;isEmojiVisible&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;@ObservedObject&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;viewModel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;ListViewModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;some&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;View&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;List&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;kt&quot;&gt;ForEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;viewModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
+                &lt;span class=&quot;kt&quot;&gt;ZStack&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;kt&quot;&gt;Button&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                        &lt;span class=&quot;n&quot;&gt;viewModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;reload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+                        &lt;span class=&quot;n&quot;&gt;isEmojiVisible&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;toggle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+                    &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                        &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;edgesIgnoringSafeArea&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+                    &lt;span class=&quot;kt&quot;&gt;Text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isEmojiVisible&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;randomEmoji&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;font&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;listRowInsets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;EdgeInsets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(\&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;defaultMinListRowHeight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cellHeight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;And then we have the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ContentView&lt;/code&gt; itself. It hosts the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;List&lt;/code&gt; where each item is represented by a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ZStack&lt;/code&gt; view which holds a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Button&lt;/code&gt; view and a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Text&lt;/code&gt; view holding the Emoji. That’s all it is.&lt;/p&gt;
+
+&lt;p&gt;The button action toggles the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;isEmojiVisible&lt;/code&gt; variable and reloads the ViewModel, generating new colors.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-final-result&quot;&gt;The final result&lt;/h2&gt;
+&lt;figure class=&quot;image&quot;&gt;
+    &lt;img src=&quot;/assets/blog/babycolors.gif&quot; alt=&quot;Final result&quot; /&gt;
+    &lt;figcaption&gt;Final result&lt;/figcaption&gt;
+  &lt;/figure&gt;
+
+&lt;p&gt;I tested it with Lola and she seems to love it. And I loved how easy is to create something from scratch using SwiftUI.&lt;/p&gt;
+
+&lt;p&gt;I publish the project on &lt;a href=&quot;https://github.com/gmoraleda/BabyColors&quot;&gt;GitHub&lt;/a&gt; for those who might be interested. Thanks for reading! ✌️&lt;/p&gt;
 </content>
  </entry>
  
