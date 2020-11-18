@@ -47,7 +47,7 @@ class ListViewModel: ObservableObject {
 
 We have a `ViewItem` which represent every cell in the TableView (a `List` in the SwifUI world). It needs to conform to `Identifiable` and it basically holds one color. Just a random generated one.
 
-Then we have a `ListViewModel` which holds an array of items. I created the `reload` function so that the array would be regenerated when any cell is touched. 
+Then we have a `ListViewModel` which holds an array of items. I defined the `reload()` function so that the array would be regenerated when any cell is touched. 
 
 {% highlight swift %}
 struct ContentView: View {

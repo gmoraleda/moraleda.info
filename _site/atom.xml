@@ -4,7 +4,7 @@
  <title>moraleda.info</title>
  <link href="http://moraleda.info/atom.xml" rel="self"/>
  <link href="http://moraleda.info/"/>
- <updated>2020-11-17T19:48:01+01:00</updated>
+ <updated>2020-11-18T10:37:21+01:00</updated>
  <id>http://moraleda.info</id>
  <author>
    <name>Guillermo Moraleda</name>
@@ -57,7 +57,7 @@ Yet there is one last screen my daughter is enjoying: my Apple Watch.&lt;/p&gt;
 
 &lt;p&gt;We have a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ViewItem&lt;/code&gt; which represent every cell in the TableView (a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;List&lt;/code&gt; in the SwifUI world). It needs to conform to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Identifiable&lt;/code&gt; and it basically holds one color. Just a random generated one.&lt;/p&gt;
 
-&lt;p&gt;Then we have a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ListViewModel&lt;/code&gt; which holds an array of items. I created the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;reload&lt;/code&gt; function so that the array would be regenerated when any cell is touched.&lt;/p&gt;
+&lt;p&gt;Then we have a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ListViewModel&lt;/code&gt; which holds an array of items. I defined the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;reload()&lt;/code&gt; function so that the array would be regenerated when any cell is touched.&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&lt;span class=&quot;kd&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;ContentView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;View&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;cellHeight&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;WKInterfaceDevice&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;current&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;screenBounds&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;height&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
