@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      iOS - Localizing strings in a project &middot; moraleda.info
+    
+  </title>
+
+  <link rel="stylesheet" href="http://moraleda.info/assets/css/poole.css">
+  <link rel="stylesheet" href="http://moraleda.info/assets/css/syntax.css">
+  <link rel="stylesheet" href="http://moraleda.info/assets/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap" >
+
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://moraleda.info/public/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="http://moraleda.info/favicon.png">
+
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://moraleda.info/atom.xml">
+</head>
+
+  <!-- <body class="theme-base-09"> -->
+
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="/">
+          moraleda.info
+        </a>
+      </h1>
+      <p class="lead">Hi, I'm Guillermo: software developer and endurance sports <a href="https://www.strava.com/athletes/1661949" target="_blank"> enthusiast</a>.</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item" href="/">Home</a>
+
+      
+
+      
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="http://moraleda.info/about/">About</a>
+          
+        
+      
+        
+      
+        
+          
+        
+      
+
+      <a class="sidebar-nav-item" href="https://github.com/gmoraleda">GitHub</a>
+    </nav>
+
+    <p>&copy; 2021. All rights reserved.</p>
+  </div>
+</div>
+
+    <div class="content container">
+      <div class="post">
+  <h1 class="post-title">iOS - Localizing strings in a project</h1>
+  <span class="post-date">19 Feb 2021</span>
+  <p>Localization is an often overlooked problem. We start a project, we know that we only have to support one language and we approach our string-handling based on that requirement. When the time comes to support a second language, the project grew so much that adapting to that second language causes pain and frustration.</p>
+
+<h2 id="doing-it-right-from-the-beginning">Doing it right from the beginning</h2>
+<p>iOS and Xcode support localized strings in a <em>rudimentary-but-pragmatic</em> way: we can define a <code class="language-plaintext highlighter-rouge">Localizable.strings</code> file, and localize that file in <em>n</em> languages. For each language we will have a key-value file that will contain all our strings:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// German strings
+
+"ok_button_title" = "OK";
+"cancel_button_title" = "Abbrechen";
+
+/*Main Screen*/
+"main_title" = "Willkommen";
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Spanish strings
+
+"ok_button_title" = "Vale";
+"cancel_button_title" = "Cancelar";
+
+/*Main Screen*/
+"main_title" = "Bienvenido";
+</code></pre></div></div>
+
+<p>For accessing these strings all we need to do is to use <code class="language-plaintext highlighter-rouge">NSLocalizedString(key, comment: "")</code> and pass the key we are interested in. Eg. <code class="language-plaintext highlighter-rouge">NSLocalizedString("ok_button_title", comment: "")</code></p>
+
+<p>This is going to work nicely and, if we were to launch the app in German or Spanish, the system will know which strings to use.</p>
+
+<h2 id="getting-they-keys-under-control">Getting they keys under control</h2>
+<p>The main drawback of that approach is that keys are strings and if they start going around, that could be prone to error.</p>
+
+<p>This can be easily solved as well. Let’s define a new type called <code class="language-plaintext highlighter-rouge">Strings</code> which will contain all our keys:</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kd">enum</span> <span class="kt">Strings</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span>
+	<span class="k">case</span> <span class="n">okButtonTitle</span> <span class="o">=</span> <span class="s">"ok_button_title"</span>
+	<span class="k">case</span> <span class="n">cancelButtonTitle</span> <span class="o">=</span> <span class="s">"cancel_button_title"</span>
+	<span class="k">case</span> <span class="n">mainTitle</span> <span class="o">=</span> <span class="s">"main_title"</span>
+	<span class="k">case</span> <span class="n">mainSubtitle</span> <span class="o">=</span> <span class="s">"main_subtitle"</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>We can even define an extension to get the localized string for every key in the <code class="language-plaintext highlighter-rouge">Strings</code> enum:</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kd">extension</span> <span class="kt">Strings</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">localized</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kt">NSLocalizedString</span><span class="p">(</span><span class="n">rawValue</span><span class="p">,</span> <span class="nv">comment</span><span class="p">:</span> <span class="s">""</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Now all we need to do to use a string in a <code class="language-plaintext highlighter-rouge">UILabel</code>, for example, is to call:</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">label</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="kt">Strings</span><span class="o">.</span><span class="n">mainTitle</span><span class="o">.</span><span class="n">localized</span></code></pre></figure>
+
+<h2 id="bringing-it-to-the-next-level-extracting-the-strings">Bringing it to the next level: extracting the strings</h2>
+<p>Keeping strings and wordings up to date is usually a burden for developers. 
+Designers would produce a mockup which some wordings than then the product manager will need to check/update. The developer is usually left with the task of making sure that these wordings are in sync. If a project is run in several platforms (iOS, Android, web…), keeping the wordings up to date and synchronized can get out of control easily.</p>
+
+<p>A wiser approach would be to move these strings out of the project and place them in a centralized tool that every platform could access. 
+You could build such a service or you can use a commercial solution.
+For the sake of this tutorial I’m going to use <a href="https://poeditor.com">POEditor</a>: an online tool which allows you define terms and their translations and provides an API to access that information.</p>
+
+<h3 id="setting-up-the-project">Setting up the project</h3>
+<p>This step is very straight-forward: we create a project, we add new entries (called terms in POEditor) and provide the translations. That’s all it is.</p>
+
+<figure class="image">
+    <img src="/assets/blog/poeditor.png" alt="POEditor" />
+    <figcaption>POEditor</figcaption>
+  </figure>
+
+<h3 id="automatizing-the-fetching-of-the-strings">Automatizing the fetching of the strings</h3>
+<p>The underlying idea is that, on every build, we want to fetch the latest strings, generating our <code class="language-plaintext highlighter-rouge">Strings</code> enum automatically (listing all available keys), and download the translations in the different supported languages.</p>
+
+<p>To do so I’m using Python, hacking my way into it (please, don’t judge my Python knowledge: I know nothing about nothing).</p>
+
+<noscript><pre>400: Invalid request</pre></noscript>
+<script src="https://gist.github.com/99e7157b78a400e29a6a0d17b178dc8a.js?file=localize.py"> </script>
+
+<p>The script does two main things: first, it fetches all the terms listed in the project. With that we create our <code class="language-plaintext highlighter-rouge">Strings</code> class (we are also taking care of the case conversion from snake to camel case).</p>
+
+<p>The second step is to download the files containing the translations.</p>
+
+<p>This script is run during the build phase:</p>
+<figure class="image">
+    <img src="/assets/blog/localize_build.png" alt="Build Phases" />
+    <figcaption>Build Phases</figcaption>
+  </figure>
+
+<h2 id="conclusion">Conclusion</h2>
+<p>This can be easily improved, but with a couple of neat tricks we were able to create a setup where developers don’t really need to worry about strings anymore. A PM or marketing person could go into that tool and update these strings and the app will pick-up on the changes during the next build.</p>
+
+<p>The tool also supports other formats for the export file (JSON, Android XML, etc.), so this script could be easily adapted to your project/platform requirements.</p>
+
+<p>Thanks for reading! ✌️</p>
+
+</div>
+
+
+<div class="related">
+  <h2>Related posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="http://moraleda.info/2020/11/17/baby-watch/">
+            SwiftUI in the Apple Watch - Baby Colors
+            <small>17 Nov 2020</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="http://moraleda.info/2020/10/08/how-to-be-a-good-developer/">
+            How to be a good developer
+            <small>08 Oct 2020</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="http://moraleda.info/2020/09/30/branching-model/">
+            🌳 Branching Model for iOS development. Continuous Integration with Bitrise
+            <small>30 Sep 2020</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+    </div>
+
+  </body>
+</html>
