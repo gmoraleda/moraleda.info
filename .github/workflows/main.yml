@@ -2,10 +2,20 @@ on:
   push:
       branches:
         - master
-name: Deploy
 jobs:
+  jekyll:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Build
+      uses: jerryjvl/jekyll-build-action@v1
+        
   FTP-Deploy-Action:
-    name: FTP-Deploy-Action
+    name: Deploy
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
