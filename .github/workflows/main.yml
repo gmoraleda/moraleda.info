@@ -2,8 +2,6 @@ on:
   push:
       branches:
         - master
-        
-        
 jobs:
   jekyll:
     name: Build
@@ -15,7 +13,6 @@ jobs:
 
     - name: Build
       uses: jerryjvl/jekyll-build-action@v1
-        
         
   FTP-Deploy-Action:
     name: Deploy
