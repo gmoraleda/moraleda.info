@@ -51,3 +51,6 @@ UUID
 ViewItem
 struct
 watchOS
+md
+txt
+ubuntu
