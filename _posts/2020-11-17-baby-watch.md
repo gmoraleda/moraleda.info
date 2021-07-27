@@ -21,7 +21,7 @@ I thought about creating a playground for her. An App on itself where she could 
 
 I have zero experience with watchOS. The app I wanted to build would be some sort of TableView where each cell would have a background color and some emojis perhaps. Emojis are fun. I can do this fairly quickly with UIKit. What about the Apple Watch?
 
-Well, now you can build a standalone watchOS App using SwitfUI even faster. The App is 50 lines of code. Yes. Fifty. And is ridiculously easy to follow:
+Well, now you can build a standalone watchOS App using SwiftUI even faster. The App is 50 lines of code. Yes. Fifty. And is ridiculously easy to follow:
 
 {% highlight swift %}
 
@@ -45,7 +45,7 @@ class ListViewModel: ObservableObject {
 
 {% endhighlight %}
 
-We have a `ViewItem` which represent every cell in the TableView (a `List` in the SwifUI world). It needs to conform to `Identifiable` and it basically holds one color. Just a random generated one.
+We have a `ViewItem` which represent every cell in the TableView (a `List` in the SwiftUI world). It needs to conform to `Identifiable` and it basically holds one color. Just a random generated one.
 
 Then we have a `ListViewModel` which holds an array of items. I defined the `reload()` function so that the array would be regenerated when any cell is touched. 
 
