@@ -14,7 +14,7 @@ This can achieved surprisingly easily using the [Build](https://github.com/marke
 
 The resulting workflow is quite straightforward:
 
-{% highlight yml %}
+{% highlight %}
 
 on:
   push:
@@ -50,7 +50,7 @@ It is important to notice that, since jobs run in isolation, both steps should r
 ## Bonus track
 I also added a different workflow to run on pull requests in order to check the spelling of Markdown files (which contain most of the blog content):
 
-{% highlight yml %}
+{% highlight %}
 
 name: Check Spelling
 on:
