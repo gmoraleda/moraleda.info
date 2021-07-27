@@ -7,7 +7,7 @@ When working in a corporate environment, you will easily find yourself building 
 
 It can be messy if there is no clear way to differentiate them at a glance, i.e. with the app icon, and can potentially lead to situations where testers insert test data into production or try _to QA_ a feature in the wrong app version.
 
-Our first approach at [Cluno] was to generate different icons for different versions and include all of them in the assets catalogue. This methods works straightforward but has two problems. First of all, it is not very flexible. The icons needs to be designed, attached to the project, and mapped to each configuration:
+Our first approach at [Cluno] was to generate different icons for different versions and include all of them in the assets catalog. This methods works straightforward but has two problems. First of all, it is not very flexible. The icons needs to be designed, attached to the project, and mapped to each configuration:
 
 {% include image.html url="/assets/blog/configurations.png" description="App Icons in Build Settings section" %}
 
@@ -23,7 +23,7 @@ There are several [tutorials], on how to [generate the app icon] using [ImageMag
 
 ### A new approach
 
-Digging into Stackoverflow I found several people facing the same issue until [this answer] pointed us in the right direction: accessing directly the icon in the asset catalogue, performing the needed modifications before copying the bundle resources and reverting all the modifications at the very end, in order to leave the project in a clean state (with an unmodified app icon).
+Digging into StackOverflow I found several people facing the same issue until [this answer] pointed us in the right direction: accessing directly the icon in the asset catalog, performing the needed modifications before copying the bundle resources and reverting all the modifications at the very end, in order to leave the project in a clean state (with an unmodified app icon).
 
 ### Show me the code!
 
