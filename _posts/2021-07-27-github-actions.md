@@ -71,3 +71,7 @@ jobs:
       uses: UnicornGlobal/spellcheck-github-actions@master
 
 ```
+
+Both workflows need to live under the [.github/workflows](https://github.com/gmoraleda/moraleda.info/tree/master/.github/workflows) folder, so that GitHub will know about them.
+
+Thanks for reading! ✌️
