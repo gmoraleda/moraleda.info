@@ -22,5 +22,5 @@ jobs:
         FTP_PASSWORD: ${{ secrets.FTP_PWD }}
         LOCAL_DIR: _site
         REMOTE_DIR: moraleda.info
-        ARGS: --delete --transfer-all	
+        ARGS: --delete --transfer-all
         # --delete arg will delete files on the server if you've deleted them in git

@@ -7,7 +7,7 @@ This is Guillermo. Or *Gui*, as the spanish phonetics of my name seem a bit tric
 
 I write code for a living. Mainly Swift for iOS devices. You can find me on [Twitter](https://twitter.com/gmoraleda_){:target="_blank"}.
 
-This site has been built with [Jekyll](https://jekyllrb.com/),uses the theme [Hyde](https://github.com/poole/hyde) and is public on [GitHub](https://github.com/gmoraleda/moraleda.info).
+This site has been built with [Jekyll](https://jekyllrb.com/), uses the theme [Hyde](https://github.com/poole/hyde) and is public on [GitHub](https://github.com/gmoraleda/moraleda.info).
 
 ## Publications
 - iOS Goodies
