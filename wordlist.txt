@@ -38,10 +38,14 @@ cellHeight
 customization
 else's
 endcomment
+endfor
 endhighlight
+endif
+enum
 feac
 fi
 gif
+github
 gmoraleda
 html
 https
@@ -55,6 +59,7 @@ mockup
 nav
 ok
 okButtonTitle
+paginator
 permalink
 png
 poeditor
@@ -71,8 +76,3 @@ vue
 watchOS
 yaml
 über
-endif
-endfor
-paginator
-github
-enum
