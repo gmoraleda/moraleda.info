@@ -3,7 +3,7 @@ layout: post
 title: Build and deploy a Jekyll blog using GitHub Actions
 ---
 
-One thing I really enjoy about my current company is how we leverage the power of GitHub actions to run many different tasks in our workflows: from linting and formatting, to creating releases or deploy apps to App Store Connect.
+One thing I really enjoy about [my current company](https://minddoc.de/) is how we leverage the power of GitHub actions to run many different tasks in our workflows: from linting and formatting, to creating releases or deploy apps to App Store Connect.
 
 Is quite impressive the amount of actions that the community put up together in the [GitHub Marketplace](https://github.com/marketplace?type=).
 
