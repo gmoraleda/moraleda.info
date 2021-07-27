@@ -14,8 +14,8 @@ This can achieved surprisingly easily using the [Build](https://github.com/marke
 
 The resulting workflow is quite straightforward:
 
-{% highlight %}
 
+```
 on:
   push:
       branches:
@@ -42,16 +42,15 @@ jobs:
         REMOTE_DIR: moraleda.info
         ARGS: --delete --transfer-all
         # --delete arg will delete files on the server if you've deleted them in git
+```
 
-{% endhighlight %}
 
 It is important to notice that, since jobs run in isolation, both steps should run in the same job in order to share the environment, otherwise we would need to pass the output of build to the deploy step. 
 
 ## Bonus track
 I also added a different workflow to run on pull requests in order to check the spelling of Markdown files (which contain most of the blog content):
 
-{% highlight %}
-
+```
 name: Check Spelling
 on:
   pull_request:
@@ -71,4 +70,4 @@ jobs:
     - name: Check Spelling
       uses: UnicornGlobal/spellcheck-github-actions@master
 
-{% endhighlight %}
+```
