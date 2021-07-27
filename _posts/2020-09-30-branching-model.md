@@ -5,15 +5,15 @@ title: 🌳 Branching Model for iOS development. Continuous Integration with Bi
 
 When I started working at my current company, the setup we had for our iOS platform was hosted completely locally: **Bitbucket Server** for the repo, **Jenkins** as build platform and an own implementation of **Hockeyapp** for the distribution (as far as I understood, from the old days when Hockeyapp was an open source project). All that was run by an external agency (the one who had developed our app).
 
-One of the first tasks I was assigned to was the internalisation of such services in order to become independent and take control of the development cycle.
+One of the first tasks I was assigned to was the internalization of such services in order to become independent and take control of the development cycle.
 
 For hosting the repository we would use **Bitbucket Cloud** and **Hockeyapp** for distribution, but since our company does not host any server at all (our infrastructure runs mostly under the AWS umbrella), taking over the Jenkins implementation as it was, was not an option. **I was in the market for a new cloud CI/CD platform.**
 
-[The Olympics of iOS cloud continuous integration servers][olimpics] was a great starting point. Since we are not developing an iOS only app, buddybuild was not considered. After some research, the two finalists were **CircleCI** and **Bitrise**.
+[The Olympics of iOS cloud continuous integration servers][olimpics] was a great starting point. Since we are not developing an iOS only app, Buddybuild was not considered. After some research, the two finalists were **CircleCI** and **Bitrise**.
 
 ## Initial Steps
 
-My initial choice was CircleCI but even I was following a couple of [tutorials][tutorials] I didn't manage to get the signing working. It may offer more customisation than Bitrise but for **someone who has no idea what's he doing, having a building blocks interface as Bitrise does is key in such an early stage**.
+My initial choice was CircleCI but even I was following a couple of [tutorials][tutorials] I didn't manage to get the signing working. It may offer more customization than Bitrise but for **someone who has no idea what's he doing, having a building blocks interface as Bitrise does is key in such an early stage**.
 
 The customer service responded promptly to my questions as well, yet another reason to move to Bitrise.
 
@@ -43,7 +43,7 @@ That same approach would apply when several major features would be ready to int
 
 {% include image.html url="/assets/blog/beta-release.gif" description="Different beta versions, manual merge into a new release candidate" %}
 
-**This release candidate would the one potentially being shipped to iTunes Connect**. In case the final testing and the review process would be satisfactory, the app would be published and a manual merge from release into `master` would be made, **including a tag with the version number. The** `master` **branch would ideally contain all the app versions published in the AppStore, properly tagged.**
+**This release candidate would the one potentially being shipped to iTunes Connect**. In case the final testing and the review process would be satisfactory, the app would be published and a manual merge from release into `master` would be made, **including a tag with the version number. The** `master` **branch would ideally contain all the app versions published in the App Store, properly tagged.**
 
 {% highlight bash %}
 git checkout master

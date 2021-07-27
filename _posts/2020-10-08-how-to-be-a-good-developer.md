@@ -15,7 +15,7 @@ So, if it's not your coding skills, what is it then?
 ## It's all about the team
 Don't get me wrong. You *need* your coding skills. You need them in the same way a football players needs to know how to kick the ball. But that alone won't make any difference. Coding is, at most, 50% of the job.
 
-If you are working for a company chances are that the rest of the time you are going to be caught in meetings. Planing sprints, discussing requirements, grooming tickets or reviewing someone elses code. And let that last one sink for a second. Reviewing code.
+If you are working for a company chances are that the rest of the time you are going to be caught in meetings. Planing sprints, discussing requirements, grooming tickets or reviewing someone else's code. And let that last one sink for a second. Reviewing code.
 
 Maybe that surprises you, but a lot of your time is going to be spent reading code. And then you start thinking twice before naming a new function or deciding whether to use shorthand argument names while writing code. Because you should choose clarity over coolness. Readability over compactness.
 
