@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Mask out text in SwiftUI
+title: Masking out text in SwiftUI
 ---
 
 Today's post is rather short: Let's mask out text on a view in order to make it transparent using SwiftUI.
