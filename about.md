@@ -1,6 +1,6 @@
 ---
 layout: about
-permalink: about.html
+permalink: about
 ---
 
 # About
