@@ -1,0 +1,16 @@
+current directory: /Users/gmoraleda/Downloads/hydejack-starter-kit-master/vendor/bundle/ruby/2.7.0/gems/http_parser.rb-0.6.0/ext/ruby_http_parser
+/Users/gmoraleda/.rbenv/versions/2.7.3/bin/ruby -I /Users/gmoraleda/.rbenv/versions/2.7.3/lib/ruby/2.7.0 -r ./siteconf20210918-16027-1hoice2.rb extconf.rb
+creating Makefile
+
+current directory: /Users/gmoraleda/Downloads/hydejack-starter-kit-master/vendor/bundle/ruby/2.7.0/gems/http_parser.rb-0.6.0/ext/ruby_http_parser
+make "DESTDIR=" clean
+
+current directory: /Users/gmoraleda/Downloads/hydejack-starter-kit-master/vendor/bundle/ruby/2.7.0/gems/http_parser.rb-0.6.0/ext/ruby_http_parser
+make "DESTDIR="
+compiling ruby_http_parser.c
+compiling ryah_http_parser.c
+linking shared-object ruby_http_parser.bundle
+
+current directory: /Users/gmoraleda/Downloads/hydejack-starter-kit-master/vendor/bundle/ruby/2.7.0/gems/http_parser.rb-0.6.0/ext/ruby_http_parser
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 ruby_http_parser.bundle ./.gem.20210918-16027-qsp3fi
