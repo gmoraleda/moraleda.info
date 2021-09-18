@@ -56,7 +56,7 @@ menu:
   # - title: Documentation
   #   url: /docs/
   - title: About
-    url: /about/
+    url: /about.html
 
 # Add links to the footer.
 # Typically you'll want to link to your cookie- or privacy policy (if appliable), etc..
@@ -130,12 +130,11 @@ defaults:
     values:
       sitemap: false
 
-  - scope:
-      path: licenses/
-    values:
-      layout: plain
-      sitemap: false
-
+  # - scope:
+  #     path: licenses/
+  #   values:
+  #     layout: plain
+  #     sitemap: false
   # # You can use the following to enable comments on all posts.
   # - scope:
   #     type:            posts
@@ -265,7 +264,7 @@ hydejack:
   # Note that dark mode only works in the PRO version of Hydejack.
   dark_mode:
     # Set to `true` to always use the dark theme.
-    always: false
+    always: true
 
     # Set to `true` to use the dark theme based on visitors' preference (OS setting).
     dynamic: true
