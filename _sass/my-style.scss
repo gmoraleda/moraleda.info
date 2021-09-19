@@ -12,3 +12,11 @@
     margin: 1rem 0;
   }
 }
+
+.navbar>.content::before {
+  box-shadow: none;
+}
+
+a.nav-btn:hover, a.nav-btn:focus, button.nav-btn:hover, button.nav-btn:focus {
+  background-image: none;
+}
