@@ -10,7 +10,7 @@ slug: blog
 
 # (Optional) Write a short (~150 characters) description of this featured tag.
 description: >
-  Articles related to the Swift, iOS or any other non-techie topic.
+  Articles related to Swift, iOS development or any other non-techie topic.
 
 # (Optional) You can disable grouping posts by date.
 # no_groups: true
