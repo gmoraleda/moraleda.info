@@ -73,8 +73,7 @@ copyright: © 2021. All rights reserved.
 
 # Format of the permalinks
 # permalink: /:categories/:year-:month-:day-:title/
-# permalink: /:year/:month/:day/:title/
-permalink: pretty
+permalink: /:year/:month/:day/:title/
 
 # Pagination configuration (used by the `blog` layout)
 paginate: 5
