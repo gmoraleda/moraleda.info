@@ -17,8 +17,11 @@ jobs:
         env:
           JEKYLL_ENV: production
 
+      - name: Copy htaccess file to _site
+        run: cp .htaccess /_site/.htaccess
+
       - name: Deploy
-        uses: SamKirkland/FTP-Deploy-Action@2.0.0
+        uses: SamKirkland/FTP-Deploy-Action@master
         env:
           FTP_SERVER: ${{ secrets.FTP_SERVER }}
           FTP_USERNAME: ${{ secrets.FTP_USER }}
