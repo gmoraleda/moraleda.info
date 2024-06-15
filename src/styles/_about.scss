@@ -8,6 +8,7 @@
 }
 
 .tech {
+  flex: 1;
   padding: 10px;
   align-items: center; // This will vertically align the children in the middle
   gap: 10px; // A
@@ -22,6 +23,7 @@
 }
 
 .user {
+  display: flex;
   text-align: center;
   font-size: 60px;
   display: flex;
