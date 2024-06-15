@@ -1,8 +1,4 @@
-.bundle
-.cache
+.idea
 .DS_Store
-.archive/
-_site/
-.sass-cache/
-.jekyll-cache
-.jekyll-metadata
+_site
+node_modules
