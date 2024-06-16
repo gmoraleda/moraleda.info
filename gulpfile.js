@@ -100,7 +100,7 @@ gulp.task('watch', function () {
   gulp.watch('src/fonts/**/*.{tff,woff,woff2}', gulp.series(['fonts']));
   gulp.watch('src/img/**/*.{jpg,png,gif}', gulp.series(['imagemin']));
   gulp.watch(
-    ['*html', '_includes/*html', '_layouts/*.html'],
+    ['*html', '_includes/**/*', '_layouts/*.html'],
     gulp.series(['jekyll-rebuild'])
   );
 });

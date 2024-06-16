@@ -1,6 +1,6 @@
 # Site settings
-title: A blog about lorem ipsum dolor sit amet
-description: A blog about lorem ipsum dolor sit amet
+title: Guillermo Moraleda
+description: Senior iOS Engineer | Mobile DevOps
 # baseurl: "/particle" # the subpath of your site, e.g. /blog
 url: 'moraleda.info' # the base hostname & protocol for your site e.g. http://willianjusten.com.br
 
@@ -12,10 +12,9 @@ user_description: >
   I am passionate about building high-quality mobile applications that deliver exceptional user experiences.
 
 user_title: Senior iOS Engineer | Mobile DevOps
-email: anon@anon.com
-# twitter_username: lorem_ipsum
-github_username: gmoraleda
-# gplus_username: lorem_ipsum
+email: moraleda@gmx.net
+github: gmoraleda
+linkedin: gmoraleda
 
 # Google-analytics
 google-analytics:

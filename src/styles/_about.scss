@@ -10,8 +10,8 @@
 .tech {
   flex: 1;
   padding: 10px;
-  align-items: center; // This will vertically align the children in the middle
-  gap: 10px; // A
+  align-items: center;
+  gap: 10px;
   i,
   img {
     vertical-align: middle;
@@ -19,24 +19,31 @@
     height: 48px;
     padding: 10px;
     font-size: 48px;
+
+    &:hover {
+      color: coral;
+    }
   }
 }
 
 .user {
   display: flex;
   text-align: center;
-  font-size: 60px;
+  font-size: 40px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+  h2 {
+    font-size: 24px;
+  }
   p {
     font-size: 16px;
   }
-  @media only screen and (min-width: $cut) {
-    flex-wrap: nowrap;
-    font-size: 75px;
-  }
+  // @media only screen and (min-width: $cut) {
+  //   flex-wrap: nowrap;
+  //   font-size: 40px;
+  // }
 }
 
 .user-details {
